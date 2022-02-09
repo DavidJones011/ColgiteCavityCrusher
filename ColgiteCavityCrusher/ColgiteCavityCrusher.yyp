@@ -1,12 +1,18 @@
 {
   "resources": [
+    {"id":{"name":"spr_cat_example3","path":"sprites/spr_cat_example3/spr_cat_example3.yy",},"order":2,},
     {"id":{"name":"spr_cat_example1","path":"sprites/spr_cat_example1/spr_cat_example1.yy",},"order":0,},
     {"id":{"name":"StateMachineTest","path":"rooms/StateMachineTest/StateMachineTest.yy",},"order":0,},
+    {"id":{"name":"MoveToState","path":"scripts/MoveToState/MoveToState.yy",},"order":3,},
+    {"id":{"name":"obj_enemy_base","path":"objects/obj_enemy_base/obj_enemy_base.yy",},"order":2,},
     {"id":{"name":"State","path":"scripts/State/State.yy",},"order":0,},
     {"id":{"name":"cont_test","path":"objects/cont_test/cont_test.yy",},"order":1,},
+    {"id":{"name":"IdleState","path":"scripts/IdleState/IdleState.yy",},"order":4,},
     {"id":{"name":"spr_cat_example2","path":"sprites/spr_cat_example2/spr_cat_example2.yy",},"order":1,},
     {"id":{"name":"StateMachine","path":"scripts/StateMachine/StateMachine.yy",},"order":2,},
+    {"id":{"name":"obj_enemy_target","path":"objects/obj_enemy_target/obj_enemy_target.yy",},"order":3,},
     {"id":{"name":"StateExamples","path":"scripts/StateExamples/StateExamples.yy",},"order":1,},
+    {"id":{"name":"AttackState","path":"scripts/AttackState/AttackState.yy",},"order":5,},
     {"id":{"name":"cont_spawntest","path":"objects/cont_spawntest/cont_spawntest.yy",},"order":0,},
   ],
   "Options": [
