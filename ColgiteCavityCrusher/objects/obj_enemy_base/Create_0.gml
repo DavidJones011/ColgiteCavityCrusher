@@ -8,7 +8,7 @@ target_position = undefined;
 
 idle_state = new IdleState("Idle", spr_cat_example1);
 chase_state = new MoveToState("MoveTo", spr_cat_example2, 2);
-attack_state = new AttackState("Attack", spr_cat_example3);
+attack_state = new AttackState("Attack", spr_rangedenemy_attack);
 
 enemy_sm = new StateMachine(self);
 enemy_sm.add_state(idle_state);
