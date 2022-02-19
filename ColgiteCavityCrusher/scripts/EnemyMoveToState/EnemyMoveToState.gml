@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
 // Move state
-function MoveToState(_id = "MoveTo", _sprite = undefined, _speed = 2, _dist_threshold = 5) : State(_id) constructor
+function EnemyMoveToState(_id = "MoveTo", _sprite = undefined, _speed = 2, _dist_threshold = 5) : State(_id) constructor
 {
 	sprite = _sprite;
 	speed = _speed;

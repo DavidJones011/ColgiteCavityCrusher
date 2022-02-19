@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
 // Initial attack state that can lead to chained combos
-function AttackState(_id = "InitialAttack", _sprite = undefined) : State(_id) constructor
+function EnemyAttackState(_id = "InitialAttack", _sprite = undefined) : State(_id) constructor
 {
 	sprite = _sprite;
 	

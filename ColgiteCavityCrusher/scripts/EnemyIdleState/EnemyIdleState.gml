@@ -2,13 +2,10 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
 // simple idle state for enemies
-function IdleState(_id = "Idle", _sprite = undefined) : State(_id) constructor
+function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) constructor
 {
 	sprite = _sprite;
-	
-	// TODO: store in struct for AI data
 	start_time = 0;
-	attack_speed = 1000;
 	
 	static enter_state = function(_sm)
 	{
@@ -22,26 +19,27 @@ function IdleState(_id = "Idle", _sprite = undefined) : State(_id) constructor
 	
 	static step_state = function(_sm)
 	{
+		var stats = _sm.get_owner().EnemyStats;
+				
 		// check the distance from the target
 		var dist = 0.0;
-		var target = _sm.get_owner().target;
-		var target_position = _sm.get_owner().target_position;
-		if(!is_undefined(target))
+		if(!is_undefined(stats.target))
 		{
 			dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, target.x, target.y);
 		}
-		else if(!is_undefined(target_position))
-		{
-			dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, target_position.x, target_position.y);
-		}
+		//else if(!is_undefined(target_position))
+		//{
+		//	dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, target_position.x, target_position.y);
+		//}
 		
 		// if the distance is greater than the threshold, change to move state
 		//TODO: make a properties struct for the enemies that states can read data from
-		if(dist > 5.0)
+
+		if(dist > stats.distToAttack)
 		{
 			_sm.set_state("MoveTo");
 		}
-		else if(dist <= 5.0 && (current_time - start_time >= attack_speed))
+		else if(dist <= stats.distToAttack && (current_time - start_time >= stats.hitRate))
 		{
 			_sm.set_state("Attack");
 		}
@@ -53,6 +51,5 @@ function IdleState(_id = "Idle", _sprite = undefined) : State(_id) constructor
 	
 	static handle_input = function(_sm, _input="")
 	{
-		
 	}
 }

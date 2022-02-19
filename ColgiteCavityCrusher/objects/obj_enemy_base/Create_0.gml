@@ -1,15 +1,23 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-// variables needed for the MoveTo state
-target = obj_enemy_target;
-target_position = undefined;
-//
+// enemy stats that the states can read from
+// states shouldn't manipulate them, its better to have functions
+EnemyStats =
+{
+	maxHealth : 100,
+	hp : 100,
+	hitRate : 1000,
+	distToAttack : 5.0,    // negative means infinite
+	target : undefined
+}
 
-idle_state = new IdleState("Idle", spr_cat_example1);
-chase_state = new MoveToState("MoveTo", spr_cat_example2, 2);
-attack_state = new AttackState("Attack", spr_rangedenemy_attack);
+// state initalization
+idle_state = new EnemyIdleState("Idle", spr_cat_example1);
+chase_state = new EnemyMoveToState("MoveTo", spr_cat_example2, 2);
+attack_state = new EnemyMeleeAttackState("Attack", spr_rangedenemy_attack, spr_rangedenemy_attack_hb, 10);
 
+// setup state machine
 enemy_sm = new StateMachine(self);
 enemy_sm.add_state(idle_state);
 enemy_sm.add_state(chase_state);
@@ -25,4 +33,33 @@ function move(_goal_x, _goal_y, _speed = 2)
 		
 	//mp_potential_settings(0, 0, 3, true);
 	mp_potential_step(_goal_x, _goal_y, _speed, true);
+}
+
+// send damage to the enemy object
+// if the enemy's hp = 0, then enemy enters a death state
+// else the enemy enters a hurt state
+function take_damage(_damage=10)
+{	
+	EnemyStats.hp -= _damage;
+	EnemyStats.hp = clamp(EnemyStats.hp, 0, EnemStats.maxHealth);
+	
+	if(EnemyStats.hp == 0)
+	{
+		enemy_sm.set_state("Death");
+	}
+	else
+	{
+		enemy_sm.set_state("Hurt");
+	}
+}
+
+function check_player_hit()
+{
+	return instance_place(x,y,obj_player)
+}
+
+function cleanup_player_hit(_instance_id = noone)
+{
+	if(_instance_id != noone)
+		instance_destroy(_instance_id);		
 }
