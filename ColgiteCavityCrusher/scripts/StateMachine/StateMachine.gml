@@ -106,6 +106,7 @@ function StateMachine (_owner = undefined) constructor
 		switch(status)
 		{
 			case SM_Status.ENTERING:
+				pending_input = undefined;
 				if(!is_undefined(current_state))
 				{
 					current_state.enter_state(self);
@@ -115,7 +116,6 @@ function StateMachine (_owner = undefined) constructor
 					status = SM_Status.NONE;
 			break;
 			case SM_Status.EXITING:
-				pending_input = undefined;
 				if(!is_undefined(current_state))
 				{
 					current_state.exit_state(self);
