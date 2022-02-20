@@ -11,10 +11,6 @@ function EnemyMeleeAttackState(_id = "MeleeAttack", _sprite = undefined, _mask =
 	sprite = _sprite;
 	mask = _mask;
 	
-	//have timer until I have animations
-	//start_time = 0;
-	//duration = 1000;
-	
 	static enter_state = function(_sm)
 	{
 		// set the sprite

@@ -22,10 +22,10 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 		var stats = _sm.get_owner().EnemyStats;
 				
 		// check the distance from the target
-		var dist = 0.0;
+		var dist = 0;
 		if(!is_undefined(stats.target))
 		{
-			dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, target.x, target.y);
+			dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, stats.target.x, stats.target.y);
 		}
 		//else if(!is_undefined(target_position))
 		//{

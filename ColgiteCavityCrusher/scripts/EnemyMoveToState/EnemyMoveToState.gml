@@ -21,30 +21,29 @@ function EnemyMoveToState(_id = "MoveTo", _sprite = undefined, _speed = 2, _dist
 	
 	static step_state = function(_sm)
 	{
-		// requires the owner to have the two variables: target and target_position
-		set_goal_object(_sm.get_owner().target);
-		set_goal_position(_sm.get_owner().target_position);
+		// grab the enemy stats
+		var stats = _sm.get_owner().EnemyStats;
 		
 		// goal object takes priority over specific location
 		var owner = _sm.get_owner();
-		var done = false;
-		if(!is_undefined(goal_object))
+		//var done = false;
+		if(!is_undefined(stats.target))
 		{
-			owner.move(goal_object.x, goal_object.y, speed);
-			if(at_goal(owner.x, owner.y, goal_object.x, goal_object.y))
+			owner.move(stats.target.x, stats.target.y, speed);
+			if(at_goal(owner.x, owner.y, stats.target.x, stats.target.y))
 			{
 				_sm.set_state("Idle");
 			}
 		}
-		else if(!is_undefined(goal_position))
-		{
-			owner.move(goal_position.x, goal_position.y, speed);
+		//else if(!is_undefined(goal_position))
+		//{
+		//	move(goal_position.x, goal_position.y, speed);
 			
-			if(at_goal(owner.x, owner.y, goal_position.x, goal_position.y))
-			{
-				_sm.set_state("Idle");
-			}
-		}
+		//	if(at_goal(owner.x, owner.y, goal_position.x, goal_position.y))
+		//	{
+				//_sm.set_state("Idle");
+		//	}
+		//}
 	}
 	
 	static exit_state = function(_sm)
