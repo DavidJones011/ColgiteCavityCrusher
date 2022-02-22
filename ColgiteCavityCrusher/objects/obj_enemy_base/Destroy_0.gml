@@ -5,4 +5,5 @@ delete EnemyStats;
 delete idle_state;
 delete chase_state;
 delete attack_state;
+delete hurt_state;
 delete enemy_sm;

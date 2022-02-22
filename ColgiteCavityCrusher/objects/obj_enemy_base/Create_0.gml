@@ -16,23 +16,37 @@ EnemyStats =
 idle_state = new EnemyIdleState("Idle", spr_cat_example1);
 chase_state = new EnemyMoveToState("MoveTo", spr_cat_example2, 100, 500);
 attack_state = new EnemyProjectileAttackState("Attack", spr_rangedenemy_attack, obj_enemy_projectile, 0);
+hurt_state = new PlayAnimationOnceState("Hurt", spr_rangedenemy_hurt, "Idle");
 
 // setup state machine
 enemy_sm = new StateMachine(self);
 enemy_sm.add_state(idle_state);
+enemy_sm.add_state(hurt_state);
 enemy_sm.add_state(chase_state);
 enemy_sm.add_state(attack_state);
 enemy_sm.set_default_state("Idle");
 
 
-// move to function
-function move(_goal_x, _goal_y, _speed = 2)
+// moves the instance towards a spot near the target
+// return true when finished moving
+// return false when not finished
+function move(_target, _speed = 2, _dist_threshold = 5)
 {
-	if(is_undefined(_goal_x) || is_undefined(_goal_y))
-		return;
-		
-	//mp_potential_settings(0, 0, 3, true);
-	mp_potential_step(_goal_x, _goal_y, _speed * (delta_time/1000000), true);
+	if(is_undefined(_target))
+		return false;
+				
+	var spot = AIHelpers().find_spot_at_player(self, self.EnemyStats.target, self.EnemyStats.distToAttack);
+	var diff = distance_to_point(spot[0], spot[1]) - self.EnemyStats.distToAttack;
+	if(diff < _dist_threshold && diff > -_dist_threshold)
+	{
+		return true;	
+	}
+	else
+	{
+		//mp_potential_settings(0, 0, 3, true);
+		mp_potential_step(spot[0], spot[1], _speed * (delta_time/1000000), true);
+		return false;
+	}
 }
 
 // send damage to the enemy object

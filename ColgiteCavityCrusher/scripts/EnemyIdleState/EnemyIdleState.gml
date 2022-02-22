@@ -25,21 +25,16 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 		var dist = 0;
 		if(!is_undefined(stats.target))
 		{
-			dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, stats.target.x, stats.target.y);
+			//var spot = AIHelpers().find_spot_at_player(_sm.get_owner(), stats.target, stats.distToAttack);
+			dist = abs(_sm.get_owner().x - spot[0]);
 		}
-		//else if(!is_undefined(target_position))
-		//{
-		//	dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, target_position.x, target_position.y);
-		//}
-		
-		// if the distance is greater than the threshold, change to move state
-		//TODO: make a properties struct for the enemies that states can read data from
 
-		if(dist > stats.distToAttack)
+		var diff = dist - stats.distToAttack;
+		if(dist > 500|| dist < -500)
 		{
 			_sm.set_state("MoveTo");
 		}
-		else if(dist <= stats.distToAttack && (current_time - start_time >= stats.hitRate))
+		else if(current_time - start_time >= stats.hitRate)
 		{
 			_sm.set_state("Attack");
 		}

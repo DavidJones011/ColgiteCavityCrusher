@@ -26,24 +26,10 @@ function EnemyMoveToState(_id = "MoveTo", _sprite = undefined, _speed = 2, _dist
 		
 		// goal object takes priority over specific location
 		var owner = _sm.get_owner();
-		//var done = false;
-		if(!is_undefined(stats.target))
+		if(!owner.move(stats.target, speed, dist_threshold))
 		{
-			owner.move(stats.target.x, stats.target.y, speed);
-			if(at_goal(owner.x, owner.y, stats.target.x, stats.target.y))
-			{
-				_sm.set_state("Idle");
-			}
+			_sm.set_state("Idle");
 		}
-		//else if(!is_undefined(goal_position))
-		//{
-		//	move(goal_position.x, goal_position.y, speed);
-			
-		//	if(at_goal(owner.x, owner.y, goal_position.x, goal_position.y))
-		//	{
-				//_sm.set_state("Idle");
-		//	}
-		//}
 	}
 	
 	static exit_state = function(_sm)
@@ -51,26 +37,5 @@ function EnemyMoveToState(_id = "MoveTo", _sprite = undefined, _speed = 2, _dist
 		// reset the goal target for the next call
 		goal_position = undefined;
 		goal_object = undefined;
-	}
-	
-	static set_goal_position = function(_goal_position)
-	{
-		goal_position = _goal_position;
-	}
-	
-	static set_goal_object = function(_goal_object)
-	{
-		goal_object = _goal_object;
-	}
-	
-	static at_goal = function(_x, _y, _goal_x, _goal_y)
-	{
-		var dist = point_distance(_x, _y, _goal_x, _goal_y);
-		return (dist <= dist_threshold);
-	}
-	
-	static set_dist_threshold = function(_dist_threshold)
-	{
-		dist_threshold = _dist_threshold;	
 	}
 }
