@@ -85,6 +85,11 @@ function get_sprite_frame_count()
 
 function spawn_projectile(_projectile)
 {
+	with(cont_camera)
+	{
+		zoom_camera(0.5);	
+	}
+	
 	if(is_undefined(_projectile))
 		return;
 		

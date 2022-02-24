@@ -26,7 +26,7 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 		if(!is_undefined(stats.target))
 		{
 			//var spot = AIHelpers().find_spot_at_player(_sm.get_owner(), stats.target, stats.distToAttack);
-			dist = abs(_sm.get_owner().x - spot[0]);
+			//dist = abs(_sm.get_owner().x - spot[0]);
 		}
 
 		var diff = dist - stats.distToAttack;
