@@ -36,3 +36,7 @@ if(keyboard_check_direct(vk_space)){
 		attack = true;
 		//on anim finish, switch sprite back
 }
+else if(image_index > image_number -1){
+	sprite_index = spr_player_recovery;
+	//need to figure out states with how they take in key inputs
+}
