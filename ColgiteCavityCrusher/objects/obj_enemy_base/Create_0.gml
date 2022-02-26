@@ -13,10 +13,11 @@ EnemyStats =
 }
 
 // state initalization
-idle_state = new EnemyIdleState("Idle", spr_cat_example1);
-chase_state = new EnemyMoveToState("MoveTo", spr_cat_example2, 100, 500);
+idle_state = new EnemyIdleState("Idle", spr_rangedenemy_idle);
+chase_state = new EnemyMoveToState("MoveTo", spr_rangedenemy_walk, 100, 500);
 attack_state = new EnemyProjectileAttackState("Attack", spr_rangedenemy_attack, obj_enemy_projectile, 0);
 hurt_state = new PlayAnimationOnceState("Hurt", spr_rangedenemy_hurt, "Idle");
+death_state = new EnemyDeathState("Death", spr_rangedenemy_death);
 
 // setup state machine
 enemy_sm = new StateMachine(self);
@@ -24,6 +25,7 @@ enemy_sm.add_state(idle_state);
 enemy_sm.add_state(hurt_state);
 enemy_sm.add_state(chase_state);
 enemy_sm.add_state(attack_state);
+enemy_sm.add_state(death_state);
 enemy_sm.set_default_state("Idle");
 
 
@@ -54,16 +56,16 @@ function move(_target, _speed = 2, _dist_threshold = 5)
 // else the enemy enters a hurt state
 function take_damage(_damage = 10)
 {	
-	EnemyStats.hp -= _damage;
-	EnemyStats.hp = clamp(EnemyStats.hp, 0, EnemStats.maxHealth);
+	self.EnemyStats.hp -= _damage;
+	self.EnemyStats.hp = clamp(self.EnemyStats.hp, 0, self.EnemyStats.maxHealth);
 	
-	if(EnemyStats.hp == 0)
+	if(self.EnemyStats.hp == 0)
 	{
-		enemy_sm.set_state("Death");
+		self.enemy_sm.set_state("Death");
 	}
 	else
 	{
-		enemy_sm.set_state("Hurt");
+		self.enemy_sm.set_state("Hurt");
 	}
 }
 
@@ -84,12 +86,7 @@ function get_sprite_frame_count()
 }
 
 function spawn_projectile(_projectile)
-{
-	with(cont_camera)
-	{
-		zoom_camera(0.5);	
-	}
-	
+{	
 	if(is_undefined(_projectile))
 		return;
 		
