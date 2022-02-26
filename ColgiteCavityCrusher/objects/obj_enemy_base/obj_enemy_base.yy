@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_cat_example1",
-    "path": "sprites/spr_cat_example1/spr_cat_example1.yy",
+    "name": "spr_rangedenemy_idle",
+    "path": "sprites/spr_rangedenemy_idle/spr_rangedenemy_idle.yy",
   },
   "solid": true,
   "visible": true,

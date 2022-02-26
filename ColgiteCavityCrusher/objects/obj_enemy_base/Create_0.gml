@@ -95,7 +95,7 @@ function spawn_projectile(_projectile)
 	with(instance_create_layer( posX, posY, "Projectiles", _projectile))
 	{
 		var targetY = other.EnemyStats.target.y - sprite_height/2;
-		depth = Helpers().calc_depth_from_y(min(other.EnemyStats.target.y, posY));
+		depth = CalcDepthFromY(min(other.EnemyStats.target.y, posY));
 		speed = 10;
 		var dirX = other.EnemyStats.target.x - posX;
 		var dirY = targetY - posY;
