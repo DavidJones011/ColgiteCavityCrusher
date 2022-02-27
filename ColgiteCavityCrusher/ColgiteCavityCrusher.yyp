@@ -10,14 +10,9 @@
     {"id":{"name":"PlayAnimationOnceState","path":"scripts/PlayAnimationOnceState/PlayAnimationOnceState.yy",},"order":5,},
     {"id":{"name":"rm_level1","path":"rooms/rm_level1/rm_level1.yy",},"order":2,},
     {"id":{"name":"rm_playerTest","path":"rooms/rm_playerTest/rm_playerTest.yy",},"order":1,},
-    {"id":{"name":"spr_player_recovery","path":"sprites/spr_player_recovery/spr_player_recovery.yy",},"order":3,},
     {"id":{"name":"spr_black_trans","path":"sprites/spr_black_trans/spr_black_trans.yy",},"order":0,},
     {"id":{"name":"StateMachineTest","path":"rooms/StateMachineTest/StateMachineTest.yy",},"order":0,},
-<<<<<<< Updated upstream
     {"id":{"name":"spr_distant_buildings","path":"sprites/spr_distant_buildings/spr_distant_buildings.yy",},"order":5,},
-=======
-    {"id":{"name":"PlayerMoveState","path":"scripts/PlayerMoveState/PlayerMoveState.yy",},"order":3,},
->>>>>>> Stashed changes
     {"id":{"name":"EnemyMoveToState","path":"scripts/EnemyMoveToState/EnemyMoveToState.yy",},"order":2,},
     {"id":{"name":"obj_enemy_base","path":"objects/obj_enemy_base/obj_enemy_base.yy",},"order":0,},
     {"id":{"name":"spr_quit","path":"sprites/spr_quit/spr_quit.yy",},"order":2,},
@@ -25,17 +20,13 @@
     {"id":{"name":"obj_enemy_projectile","path":"objects/obj_enemy_projectile/obj_enemy_projectile.yy",},"order":1,},
     {"id":{"name":"spr_rangedenemy_attack_hb","path":"sprites/spr_rangedenemy_attack_hb/spr_rangedenemy_attack_hb.yy",},"order":4,},
     {"id":{"name":"spr_rangedenemy_death","path":"sprites/spr_rangedenemy_death/spr_rangedenemy_death.yy",},"order":9,},
-    {"id":{"name":"spr_player_death","path":"sprites/spr_player_death/spr_player_death.yy",},"order":8,},
     {"id":{"name":"spr_deadtooth","path":"sprites/spr_deadtooth/spr_deadtooth.yy",},"order":4,},
-    {"id":{"name":"spr_player_hit","path":"sprites/spr_player_hit/spr_player_hit.yy",},"order":6,},
     {"id":{"name":"cont_test","path":"objects/cont_test/cont_test.yy",},"order":1,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":4,},
     {"id":{"name":"spr_sky","path":"sprites/spr_sky/spr_sky.yy",},"order":0,},
     {"id":{"name":"EnemyIdleState","path":"scripts/EnemyIdleState/EnemyIdleState.yy",},"order":1,},
     {"id":{"name":"spr_rangedenemy_idle","path":"sprites/spr_rangedenemy_idle/spr_rangedenemy_idle.yy",},"order":7,},
     {"id":{"name":"spr_rangedenemy_walk","path":"sprites/spr_rangedenemy_walk/spr_rangedenemy_walk.yy",},"order":8,},
-    {"id":{"name":"PlayerIdleState","path":"scripts/PlayerIdleState/PlayerIdleState.yy",},"order":2,},
-    {"id":{"name":"spr_player_attack","path":"sprites/spr_player_attack/spr_player_attack.yy",},"order":5,},
     {"id":{"name":"spr_gameover_title","path":"sprites/spr_gameover_title/spr_gameover_title.yy",},"order":1,},
     {"id":{"name":"EnemyDeathState","path":"scripts/EnemyDeathState/EnemyDeathState.yy",},"order":6,},
     {"id":{"name":"spr_tryagain","path":"sprites/spr_tryagain/spr_tryagain.yy",},"order":3,},
@@ -49,10 +40,7 @@
     {"id":{"name":"spr_player_idle","path":"sprites/spr_player_idle/spr_player_idle.yy",},"order":4,},
     {"id":{"name":"EnemyProjectileAttackState","path":"scripts/EnemyProjectileAttackState/EnemyProjectileAttackState.yy",},"order":4,},
     {"id":{"name":"StateMachine","path":"scripts/StateMachine/StateMachine.yy",},"order":2,},
-    {"id":{"name":"spr_player_walk","path":"sprites/spr_player_walk/spr_player_walk.yy",},"order":7,},
-    {"id":{"name":"PlayerAttackState","path":"scripts/PlayerAttackState/PlayerAttackState.yy",},"order":0,},
     {"id":{"name":"StateExamples","path":"scripts/StateExamples/StateExamples.yy",},"order":1,},
-    {"id":{"name":"PlayerDeathState","path":"scripts/PlayerDeathState/PlayerDeathState.yy",},"order":1,},
     {"id":{"name":"EnemyAttackState","path":"scripts/EnemyAttackState/EnemyAttackState.yy",},"order":0,},
     {"id":{"name":"cont_camera","path":"objects/cont_camera/cont_camera.yy",},"order":7,},
     {"id":{"name":"obj_obstacle","path":"objects/obj_obstacle/obj_obstacle.yy",},"order":6,},
@@ -72,13 +60,9 @@
     "children": [],
   },
   "RoomOrderNodes": [
-<<<<<<< Updated upstream
     {"roomId":{"name":"rm_level1","path":"rooms/rm_level1/rm_level1.yy",},},
     {"roomId":{"name":"StateMachineTest","path":"rooms/StateMachineTest/StateMachineTest.yy",},},
-=======
->>>>>>> Stashed changes
     {"roomId":{"name":"rm_playerTest","path":"rooms/rm_playerTest/rm_playerTest.yy",},},
-    {"roomId":{"name":"StateMachineTest","path":"rooms/StateMachineTest/StateMachineTest.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
@@ -101,12 +85,8 @@
     {"folderPath":"folders/Sprites/Enemies.yy","order":6,"resourceVersion":"1.0","name":"Enemies","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/Player.yy","order":7,"resourceVersion":"1.0","name":"Player","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/GUI.yy","order":9,"resourceVersion":"1.0","name":"GUI","tags":[],"resourceType":"GMFolder",},
-<<<<<<< Updated upstream
     {"folderPath":"folders/Sprites/Environment.yy","order":11,"resourceVersion":"1.0","name":"Environment","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/Environment/Level1.yy","order":1,"resourceVersion":"1.0","name":"Level1","tags":[],"resourceType":"GMFolder",},
-=======
-    {"folderPath":"folders/Scripts/PlayerStates.yy","order":5,"resourceVersion":"1.0","name":"PlayerStates","tags":[],"resourceType":"GMFolder",},
->>>>>>> Stashed changes
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
@@ -116,6 +96,7 @@
   ],
   "IncludedFiles": [],
   "MetaData": {
+    "IDEVersion": "2022.1.1.610",
     "IDEVersion": "2022.1.0.609",
   },
   "resourceVersion": "1.4",
