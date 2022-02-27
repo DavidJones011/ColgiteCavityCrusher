@@ -6,14 +6,20 @@ target = obj_player;
 cameraLerpAmount = 0.05;
 posX = 0;
 posY = 0;
-cameraWidth = 1920;
-cameraHeight = 1080;
+cameraWidth = 7000;
+cameraHeight = 4000;
 zoomLerpAmount = 0.05;
 zoomFactor = 1;
 desiredZoomFactor = 1;
 
-// resize surface to match window
-surface_resize(application_surface, cameraWidth, cameraHeight);
+// resize surface and window
+var dWidth = display_get_width();
+var dHeight = display_get_height();
+var dPosX = (dWidth/2) - 480;
+var dPosY = (dHeight/2) -270;
+
+window_set_rectangle(dPosX, dPosY, 960, 540);
+surface_resize(application_surface, 960, 540);
 
 // variables used for effects
 offsetX = 0;

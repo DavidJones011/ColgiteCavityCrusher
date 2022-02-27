@@ -7,7 +7,8 @@ if(target != noone)
 	var desiredX = target.x - camera_get_view_width(view_camera[0]) * 0.5;
 	var desiredY = target.y - camera_get_view_height(view_camera[0]) * 0.5;
 	posX = lerp(posX, desiredX, cameraLerpAmount);
-	posY = lerp(posY, desiredY, cameraLerpAmount);
+	// disable for now, perhaps just add a constraint
+	//posY = lerp(posY, desiredY, cameraLerpAmount);
 }
 
 // update camera shaking

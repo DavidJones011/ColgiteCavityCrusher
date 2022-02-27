@@ -96,7 +96,7 @@ function spawn_projectile(_projectile)
 	{
 		var targetY = other.EnemyStats.target.y - sprite_height/2;
 		depth = CalcDepthFromY(min(other.EnemyStats.target.y, posY));
-		speed = 10;
+		speed = 70;
 		var dirX = other.EnemyStats.target.x - posX;
 		var dirY = targetY - posY;
 		var offset = 0.0;
