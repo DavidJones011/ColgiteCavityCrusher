@@ -8,8 +8,9 @@ EnemyStats =
 	maxHealth : 100,
 	hp : 100,
 	hitRate : 1000,
-	distToAttack : 2300,    // negative means infinite
-	target : obj_player
+	distToAttack : 2300,
+	target : obj_player,
+	spawner : undefined
 }
 
 // state initalization
@@ -118,4 +119,11 @@ function spawn_projectile(_projectile)
 function has_passed_frame(_frame_index)
 {
 	return image_index > _frame_index;
+}
+
+function set_spawner(_spawner)
+{
+	if(is_undefined(_spawner) || _spawner.object_index != cont_spawner)
+		return;		
+	self.EnemyStats.spawner = _spawner;
 }

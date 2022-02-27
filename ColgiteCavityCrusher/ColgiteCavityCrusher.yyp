@@ -24,8 +24,8 @@
     {"id":{"name":"obj_enemy_projectile","path":"objects/obj_enemy_projectile/obj_enemy_projectile.yy",},"order":1,},
     {"id":{"name":"spr_rangedenemy_attack_hb","path":"sprites/spr_rangedenemy_attack_hb/spr_rangedenemy_attack_hb.yy",},"order":4,},
     {"id":{"name":"spr_rangedenemy_death","path":"sprites/spr_rangedenemy_death/spr_rangedenemy_death.yy",},"order":9,},
+    {"id":{"name":"spr_empty","path":"sprites/spr_empty/spr_empty.yy",},"order":12,},
     {"id":{"name":"spr_deadtooth","path":"sprites/spr_deadtooth/spr_deadtooth.yy",},"order":4,},
-    {"id":{"name":"cont_test","path":"objects/cont_test/cont_test.yy",},"order":1,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":4,},
     {"id":{"name":"spr_sky","path":"sprites/spr_sky/spr_sky.yy",},"order":0,},
     {"id":{"name":"EnemyIdleState","path":"scripts/EnemyIdleState/EnemyIdleState.yy",},"order":1,},
@@ -53,7 +53,7 @@
     {"id":{"name":"spr_player_walk","path":"sprites/spr_player_walk/spr_player_walk.yy",},"order":7,},
     {"id":{"name":"spr_player_hit","path":"sprites/spr_player_hit/spr_player_hit.yy",},"order":6,},
     {"id":{"name":"obj_obstacle","path":"objects/obj_obstacle/obj_obstacle.yy",},"order":6,},
-    {"id":{"name":"cont_spawntest","path":"objects/cont_spawntest/cont_spawntest.yy",},"order":0,},
+    {"id":{"name":"cont_spawner","path":"objects/cont_spawner/cont_spawner.yy",},"order":0,},
   ],
   "Options": [
     {"name":"Main","path":"options/main/options_main.yy",},
