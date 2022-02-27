@@ -25,12 +25,12 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 		var dist = 0;
 		if(!is_undefined(stats.target))
 		{
-			//var spot = AIHelpers().find_spot_at_player(_sm.get_owner(), stats.target, stats.distToAttack);
-			//dist = abs(_sm.get_owner().x - spot[0]);
+			var spot = FindSpotAtTarget(_sm.get_owner(), stats.target, stats.distToAttack);
+			_sm.get_owner().image_xscale = sign(_sm.get_owner().x - stats.target.x);
+			dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, spot[0], spot[1]+300);
 		}
 
-		var diff = dist - stats.distToAttack;
-		if(dist > 500|| dist < -500)
+		if(dist > 400)
 		{
 			_sm.set_state("MoveTo");
 		}

@@ -6,7 +6,7 @@
     "path": "folders/Scripts/Helpers.yy",
   },
   "resourceVersion": "1.0",
-  "name": "AIHelpers",
+  "name": "FindSpotAtTarget",
   "tags": [],
   "resourceType": "GMScript",
 }

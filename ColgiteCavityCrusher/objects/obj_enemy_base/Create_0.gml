@@ -8,13 +8,13 @@ EnemyStats =
 	maxHealth : 100,
 	hp : 100,
 	hitRate : 1000,
-	distToAttack : 500,    // negative means infinite
+	distToAttack : 2300,    // negative means infinite
 	target : obj_player
 }
 
 // state initalization
 idle_state = new EnemyIdleState("Idle", spr_rangedenemy_idle);
-chase_state = new EnemyMoveToState("MoveTo", spr_rangedenemy_walk, 100, 500);
+chase_state = new EnemyMoveToState("MoveTo", spr_rangedenemy_walk, 10, 500);
 attack_state = new EnemyProjectileAttackState("Attack", spr_rangedenemy_attack, obj_enemy_projectile, 0);
 hurt_state = new PlayAnimationOnceState("Hurt", spr_rangedenemy_hurt, "Idle");
 death_state = new EnemyDeathState("Death", spr_rangedenemy_death);
@@ -36,19 +36,22 @@ function move(_target, _speed = 2, _dist_threshold = 5)
 {
 	if(is_undefined(_target))
 		return false;
-				
-	var spot = AIHelpers().find_spot_at_player(self, self.EnemyStats.target, self.EnemyStats.distToAttack);
-	var diff = distance_to_point(spot[0], spot[1]) - self.EnemyStats.distToAttack;
-	if(diff < _dist_threshold && diff > -_dist_threshold)
+		
+	var spot = FindSpotAtTarget(self, self.EnemyStats.target, self.EnemyStats.distToAttack);	
+	if (distance_to_point(spot[0], spot[1]+300) > 10)
 	{
-		return true;	
-	}
-	else
-	{
-		//mp_potential_settings(0, 0, 3, true);
-		mp_potential_step(spot[0], spot[1], _speed * (delta_time/1000000), true);
-		return false;
-	}
+		mp_linear_step_object(spot[0], spot[1]+300, _speed, all);
+		if(direction > 90 && direction < 270)
+		{
+			image_xscale = 1;
+		}
+		else
+		{
+			image_xscale = -1;
+		}
+		return true;
+	}	
+	return false;
 }
 
 // send damage to the enemy object
@@ -90,7 +93,7 @@ function spawn_projectile(_projectile)
 	if(is_undefined(_projectile))
 		return;
 		
-	var posX = other.x + 200;
+	var posX = other.x - 400 * image_xscale;
 	var posY = other.y - other.sprite_height/2;
 	with(instance_create_layer( posX, posY, "Projectiles", _projectile))
 	{
