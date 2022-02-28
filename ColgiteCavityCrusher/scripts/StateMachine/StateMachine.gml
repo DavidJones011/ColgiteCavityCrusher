@@ -85,6 +85,12 @@ function StateMachine (_owner = undefined) constructor
 	// sets the current state for the state machine, if failes, the current state doesn't change
 	static set_state = function(_id)
 	{
+		if(!is_undefined(pending_state_id))
+		{
+			//show_debug_message("StateMachine::set_state(), already pending state, ignored.");
+			return;
+		}	
+		
 		if(is_undefined(_id))
 		{
 			show_debug_message("StateMachine::set_state(), state was undefined");

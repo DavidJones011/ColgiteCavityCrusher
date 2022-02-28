@@ -1,9 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if((current_time - prev_time)*0.001 > time_to_spawn && current_spawns < spawn_limit)
+var spawnX = x;
+var spawnY = y+random_range(-300,300);
+
+if((current_time - prev_time)*0.001 > time_to_spawn && (current_spawns < spawn_limit) && distance_to_object(obj_player) > 500)
 {
-	var inst = instance_create_depth(x,y+random_range(-300,300),0, obj_enemy_base);
+	var inst = instance_create_depth(spawnX,spawnY,0, obj_enemy_base);
 	with(inst)
 	{
 		inst.set_spawner(other);

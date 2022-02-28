@@ -30,7 +30,7 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 			dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, spot[0], spot[1]+300);
 		}
 
-		if(dist > 400)
+		if(dist > 550)
 		{
 			_sm.set_state("MoveTo");
 		}

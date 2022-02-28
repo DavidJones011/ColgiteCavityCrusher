@@ -39,9 +39,10 @@ function move(_target, _speed = 2, _dist_threshold = 5)
 		return false;
 		
 	var spot = FindSpotAtTarget(self, self.EnemyStats.target, self.EnemyStats.distToAttack);	
-	if (distance_to_point(spot[0], spot[1]+300) > 10)
+	if (distance_to_point(spot[0], spot[1]+300) > 200)
 	{
-		mp_linear_step_object(spot[0], spot[1]+300, _speed, all);
+		mp_potential_step(spot[0], spot[1]+300, _speed, all);
+		//mp_linear_step_object(spot[0], spot[1]+300, _speed, all);
 		if(direction > 90 && direction < 270)
 		{
 			image_xscale = 1;

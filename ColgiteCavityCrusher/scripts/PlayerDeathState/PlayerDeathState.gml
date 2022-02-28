@@ -10,7 +10,8 @@ function PlayerDeathState(_id = "Death", _sprite = undefined) : State(_id) const
 		_sm.get_owner().death(false);
 		if(!is_undefined(sprite))
 		{
-			_sm.get_owner().sprite_index = sprite;	
+			_sm.get_owner().sprite_index = sprite;
+			_sm.get_owner().image_index = 0;
 		}
 	}
 	
