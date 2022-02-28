@@ -16,15 +16,16 @@ function PlayerIdleState(_id = "Idle", _sprite = undefined) : State(_id) constru
 			_sm.get_owner().sprite_index = sprite;	
 		}
 		_sm.get_owner()._input = true;
+		_sm.get_owner().image_speed = 1;
 		start_time = current_time;
 	}
 	
 	static step_state = function(_sm)
 	{
-		var stats = _sm.get_owner().PlayerStats;
+		//var stats = _sm.get_owner().PlayerStats;
 				
 		// check the distance from the target
-		var dist = 0;
+		//var dist = 0;
 		//if(!is_undefined(stats.target))
 		//{
 		//	//var spot = AIHelpers().find_spot_at_player(_sm.get_owner(), stats.target, stats.distToAttack);
@@ -51,8 +52,8 @@ function PlayerIdleState(_id = "Idle", _sprite = undefined) : State(_id) constru
 		if(_input == "attack"){
 			_sm.set_state("Attack");	
 		}
-		else if(_input != "none"){
-		_sm.set_state("Move");
+		else if(_input != "anim_end"){
+			_sm.set_state("Move");
 		}	
 	}
 }

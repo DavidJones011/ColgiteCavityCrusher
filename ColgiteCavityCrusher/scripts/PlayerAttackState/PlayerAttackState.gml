@@ -21,8 +21,7 @@ function PlayerAttackState(_id = "Attack", _sprite = undefined) : State(_id) con
 	}
 	
 	static step_state = function(_sm)
-	{
-		
+	{		
 		if(!_sm.get_owner().attack()){
 			_sm.set_state("Recover");	
 		}
@@ -30,14 +29,14 @@ function PlayerAttackState(_id = "Attack", _sprite = undefined) : State(_id) con
 	
 	static exit_state = function(_sm)
 	{
-		_sm.set_state("Recover");
+		//_sm.set_state("Recover");
 	}
 	
 	static handle_input = function(_sm, _input)
 	{
-		if(_input != "attack"){
-			_sm.set_state("Recover");	
-		}
+		//if(_input != "attack"){
+		//	_sm.set_state("Recover");	
+		//}
 		// would be triggered by animation
 	}
 }

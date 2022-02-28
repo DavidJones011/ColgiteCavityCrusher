@@ -9,7 +9,8 @@ points = 0;
 _death = false;
 _attack = false;
 _input = true;
-animEnd = false;
+counts = true;
+//animEnd = false;
 
 idle_state = new PlayerIdleState("Idle", spr_player_idle);
 chase_state = new PlayerMoveState("Move", spr_player_walk);
@@ -30,7 +31,7 @@ player_sm.set_default_state("Idle");
 
 function take_damage(_damage){
 	PlayerStats.hp -= _damage;
-	if(PlayerStats.hp ==0){
+	if(PlayerStats.hp <=0){
 		player_sm.set_state("Death");
 		
 	}
@@ -64,6 +65,7 @@ function move(_x, _y){
 
 function attack(){
 	_attack = true;
+	
 	if(!keyboard_check_direct(vk_space)){
 		_input = false;
 		return false;	

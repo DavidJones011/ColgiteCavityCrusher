@@ -1,6 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 if(_input){
+	
 	if(keyboard_check(ord("A"))){
 		//if(image_xscale >0){
 		//	image_xscale *=-1;
