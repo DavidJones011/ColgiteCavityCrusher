@@ -9,11 +9,13 @@ function PlayerIdleState(_id = "Idle", _sprite = undefined) : State(_id) constru
 	
 	static enter_state = function(_sm)
 	{
+		
 		// set the sprite
 		if(!is_undefined(sprite))
 		{
 			_sm.get_owner().sprite_index = sprite;	
 		}
+		_sm.get_owner()._input = true;
 		start_time = current_time;
 	}
 	

@@ -2,9 +2,13 @@
 PlayerStats=
 {
 	hp: 100,
-	_speed: 2
+	_speed: 20
 }
 
+points = 0;
+_death = false;
+_attack = false;
+_input = true;
 animEnd = false;
 
 idle_state = new PlayerIdleState("Idle", spr_player_idle);
@@ -25,13 +29,14 @@ player_sm.add_state(recovery_state);
 player_sm.set_default_state("Idle");
 
 function take_damage(_damage){
-	hp -= _damage;
-	if(hp ==0){
+	PlayerStats.hp -= _damage;
+	if(PlayerStats.hp ==0){
 		player_sm.set_state("Death");
 		
 	}
 	else{
 		player_sm.set_state("Hurt");
+		_input = false;
 	}
 }
 
@@ -46,14 +51,34 @@ function move(_x, _y){
 		image_xscale *= -1;
 	}
 		
+	if(_y == 1){
+		y += _y * PlayerStats._speed;
+	}
+	else if(y > 2000){
+		y += _y * PlayerStats._speed;	
+	}
 	x += _x * PlayerStats._speed;
-	y += _y * PlayerStats._speed;
+	
 	return true;
 }
 
 function attack(){
-	if(keyboard_check(vk_nokey)){
+	_attack = true;
+	if(!keyboard_check_direct(vk_space)){
+		_input = false;
 		return false;	
-	}
+	}	
 	return true;
+}
+
+function death(_end){
+	_death = true;
+	if(!_end){
+		instance_deactivate_all(true);
+	}
+	else{
+		
+		instance_create_layer(0,0,"Instances", obj_gameover);
+	}
+	
 }

@@ -10,6 +10,6 @@ if(x < 0 || x > room_width || y < 0 || y > room_height)
 // destory projectile and cause damage to player
 if(place_meeting(x,y,obj_player))
 {
-	//obj_player.take_damage(10);
+	obj_player.take_damage(10);
 	instance_destroy();
 }

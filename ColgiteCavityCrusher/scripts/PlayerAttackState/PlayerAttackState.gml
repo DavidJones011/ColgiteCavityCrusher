@@ -35,7 +35,9 @@ function PlayerAttackState(_id = "Attack", _sprite = undefined) : State(_id) con
 	
 	static handle_input = function(_sm, _input)
 	{
-		
+		if(_input != "attack"){
+			_sm.set_state("Recover");	
+		}
 		// would be triggered by animation
 	}
 }
