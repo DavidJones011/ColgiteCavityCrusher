@@ -12,7 +12,7 @@ function EnemyDeathState(_id = "ProjectileAttack", _sprite = undefined) : State(
 		if(!is_undefined(sprite))
 		{
 			_sm.get_owner().sprite_index = sprite;
-			_sm.get_owner().mask_index = spr_empty; // stupid way of disabling collision
+			_sm.get_owner().solid = false;
 		}
 	}
 	

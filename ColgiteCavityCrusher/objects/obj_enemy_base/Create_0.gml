@@ -66,10 +66,12 @@ function take_damage(_damage = 10)
 	
 	if(self.EnemyStats.hp == 0)
 	{
+		//audio_play_sound(snd_critcal_hit, 5, false);
 		self.enemy_sm.set_state("Death");
 	}
 	else
 	{
+		//audio_play_sound(snd_normal_hit, 5, false);
 		self.enemy_sm.set_state("Hurt");
 	}
 }

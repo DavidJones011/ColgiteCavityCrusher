@@ -5,10 +5,7 @@
   },
   "solid": true,
   "visible": true,
-  "spriteMaskId": {
-    "name": "spr_cat_example1",
-    "path": "sprites/spr_cat_example1/spr_cat_example1.yy",
-  },
+  "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
   "physicsObject": false,
