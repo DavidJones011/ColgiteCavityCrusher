@@ -2,9 +2,3 @@
 // You can write your code in this editor
 destroy_sm(enemy_sm);
 delete EnemyStats;
-delete idle_state;
-delete chase_state;
-delete attack_state;
-delete hurt_state;
-delete death_state;
-delete enemy_sm;

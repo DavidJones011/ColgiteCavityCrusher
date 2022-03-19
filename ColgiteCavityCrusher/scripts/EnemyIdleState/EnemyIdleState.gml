@@ -19,25 +19,25 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 	
 	static step_state = function(_sm)
 	{
-		var stats = _sm.get_owner().EnemyStats;
-				
-		// check the distance from the target
-		var dist = 0;
+		var stats = _sm.get_owner().EnemyStats;		
+		var utility = new ScopedUtilityEvaluator();
+	
 		if(!is_undefined(stats.target))
 		{
 			var spot = FindSpotAtTarget(_sm.get_owner(), stats.target, stats.distToAttack);
-			_sm.get_owner().image_xscale = sign(_sm.get_owner().x - stats.target.x);
-			dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, spot[0], spot[1]+300);
+			//_sm.get_owner().image_xscale = sign(_sm.get_owner().x - stats.target.x);
+			var dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, spot[0], spot[1]+300);
+			utility.add_utility_squared("MoveTo", dist, 3000);
+			utility.add_utility_one_minus_linear("Idle", dist, stats.distToAttack, 0.5);
+			if(current_time - start_time >= stats.attackSpeed)
+			{
+				utility.add_utility_one_minus_linear("Attack", dist, stats.distToAttack + 10);
+			}
 		}
-
-		if(dist > 550)
-		{
-			_sm.set_state("MoveTo");
-		}
-		else if(current_time - start_time >= stats.hitRate)
-		{
-			_sm.set_state("Attack");
-		}
+				
+		_sm.set_state(utility.get_utility_name());
+		show_debug_message(utility.get_utility());
+		delete utility;
 	}
 	
 	static exit_state = function(_sm)

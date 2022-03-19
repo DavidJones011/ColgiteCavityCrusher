@@ -7,32 +7,20 @@ EnemyStats =
 {
 	maxHealth : 100,
 	hp : 100,
-	hitRate : 1000,
+	attackSpeed : 1000,
 	distToAttack : 2300,
 	target : obj_player,
 	spawner : undefined
 }
 
-// state initalization
-idle_state = new EnemyIdleState("Idle", spr_rangedenemy_idle);
-chase_state = new EnemyMoveToState("MoveTo", spr_rangedenemy_walk, 10, 500);
-attack_state = new EnemyProjectileAttackState("Attack", spr_rangedenemy_attack, obj_enemy_projectile, 0);
-hurt_state = new PlayAnimationOnceState("Hurt", spr_rangedenemy_hurt, "Idle");
-death_state = new EnemyDeathState("Death", spr_rangedenemy_death);
-
-// setup state machine
+// create state machine for enemy
+// make sure to add states to this state machine
 enemy_sm = new StateMachine(self);
-enemy_sm.add_state(idle_state);
-enemy_sm.add_state(hurt_state);
-enemy_sm.add_state(chase_state);
-enemy_sm.add_state(attack_state);
-enemy_sm.add_state(death_state);
-enemy_sm.set_default_state("Idle");
 
-
-// moves the instance towards a spot near the target
-// return true when finished moving
-// return false when not finished
+/* moves the instance towards a spot near the target
+ * return true when finished moving
+ * return false when not finished
+ */
 function move(_target, _speed = 2, _dist_threshold = 5)
 {
 	if(is_undefined(_target))
@@ -56,9 +44,10 @@ function move(_target, _speed = 2, _dist_threshold = 5)
 	return false;
 }
 
-// send damage to the enemy object
-// if the enemy's hp = 0, then enemy enters a death state
-// else the enemy enters a hurt state
+/* send damage to the enemy object
+ * if the enemy's hp = 0, then enemy statemachien enters the death state (if available)
+ * else the enemy enters a hurt state
+ */
 function take_damage(_damage = 10)
 {	
 	self.EnemyStats.hp -= _damage;
@@ -76,22 +65,32 @@ function take_damage(_damage = 10)
 	}
 }
 
+/* 
+ * wrapper to call instance_place for player collision
+ */
 function check_player_hit()
 {
 	return instance_place(x,y,obj_player)
 }
 
+/* 
+ */
 function cleanup_player_hit(_instance_id = noone)
 {
 	if(_instance_id != noone)
 		instance_destroy(_instance_id);		
 }
 
+/* get the current frame image of the sprite
+ */
 function get_sprite_frame_count()
 {
+	
 	return sprite_get_number(sprite_index);
 }
 
+/* spawn a projectile
+ */
 function spawn_projectile(_projectile)
 {	
 	if(is_undefined(_projectile))
@@ -119,11 +118,15 @@ function spawn_projectile(_projectile)
 	}	
 }
 
+/* check to see if the current frame on the sprite has past the given frame index
+ */
 function has_passed_frame(_frame_index)
 {
 	return image_index > _frame_index;
 }
 
+/* sets the spawner for this enemy object
+ */
 function set_spawner(_spawner)
 {
 	if(is_undefined(_spawner) || _spawner.object_index != cont_spawner)

@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 prev_time = 0;
-time_to_spawn = 8.0;
+time_to_spawn = 2.0;
 spawn_limit = 2;
 current_spawns = 0;
 
