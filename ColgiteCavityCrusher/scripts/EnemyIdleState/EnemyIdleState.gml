@@ -6,6 +6,7 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 {
 	sprite = _sprite;
 	start_time = 0;
+	attack_dev = 0;
 	
 	static enter_state = function(_sm)
 	{
@@ -14,7 +15,9 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 		{
 			_sm.get_owner().sprite_index = sprite;	
 		}
+		var stats = _sm.get_owner().EnemyStats;		
 		start_time = current_time;
+		attack_dev = random_range(-stats.attackSpeedDev, stats.attackSpeedDev);
 	}
 	
 	static step_state = function(_sm)
@@ -29,7 +32,7 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 			var dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, spot[0], spot[1]+300);
 			utility.add_utility_squared("MoveTo", dist, 3000);
 			utility.add_utility_one_minus_linear("Idle", dist, stats.distToAttack, 0.5);
-			if(current_time - start_time >= stats.attackSpeed)
+			if(current_time - start_time >= stats.attackSpeed + attack_dev)
 			{
 				utility.add_utility_one_minus_linear("Attack", dist, stats.distToAttack + 10);
 			}

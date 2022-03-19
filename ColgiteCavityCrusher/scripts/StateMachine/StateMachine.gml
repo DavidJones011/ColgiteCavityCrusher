@@ -87,7 +87,7 @@ function StateMachine (_owner = undefined) constructor
 	{
 		if(!is_undefined(pending_state_id))
 		{
-			show_debug_message("StateMachine::set_state(), already pending state, ignored.");
+			//show_debug_message("StateMachine::set_state(), already pending state, ignored.");
 			return;
 		}	
 		
@@ -99,7 +99,7 @@ function StateMachine (_owner = undefined) constructor
 		
 		if(_id == current_state.get_state_id())
 		{
-			show_debug_message("StateMachine::set_state(), already in state");
+			//show_debug_message("StateMachine::set_state(), already in state");
 			return;
 		}
 		

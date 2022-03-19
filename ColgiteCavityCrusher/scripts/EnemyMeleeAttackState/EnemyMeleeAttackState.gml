@@ -44,7 +44,7 @@ function EnemyMeleeAttackState(_id = "MeleeAttack", _sprite = undefined, _mask =
 				}
 				hasHit = true;
 			}
-			_sm.get_owner().cleanup_player_hit(hit);
+			//_sm.get_owner().cleanup_player_hit(hit);
 		}
 	}
 	

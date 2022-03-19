@@ -8,6 +8,7 @@ EnemyStats =
 	maxHealth : 100,
 	hp : 100,
 	attackSpeed : 1000,
+	attackSpeedDev : 700,
 	distToAttack : 2300,
 	target : obj_player,
 	spawner : undefined
@@ -27,7 +28,7 @@ function move(_target, _speed = 2, _dist_threshold = 5)
 		return false;
 		
 	var spot = FindSpotAtTarget(self, self.EnemyStats.target, self.EnemyStats.distToAttack);	
-	if (distance_to_point(spot[0], spot[1]+300) > 200)
+	if (distance_to_point(spot[0], spot[1]+300) > 100)
 	{
 		mp_potential_step(spot[0], spot[1]+300, _speed, all);
 		//mp_linear_step_object(spot[0], spot[1]+300, _speed, all);
