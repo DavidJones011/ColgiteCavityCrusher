@@ -22,7 +22,9 @@ function PlayerAttackState(_id = "Attack", _sprite = undefined) : State(_id) con
 	
 	static step_state = function(_sm)
 	{		
+		
 		if(!_sm.get_owner().attack()){
+		
 			_sm.set_state("Recover");	
 		}
 	}

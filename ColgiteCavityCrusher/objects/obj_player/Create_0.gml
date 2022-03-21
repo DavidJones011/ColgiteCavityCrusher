@@ -10,6 +10,7 @@ _death = false;
 _attack = false;
 _input = true;
 counts = true;
+_attackTimer = 0;
 //animEnd = false;
 
 idle_state = new PlayerIdleState("Idle", spr_player_idle);
@@ -51,11 +52,13 @@ function move(_x, _y){
 	else if(image_xscale < 0 && _x > 0){
 		image_xscale *= -1;
 	}
-		
-	if(_y == 1){
+	
+	
+	
+	if(_y == 1 && y < 4000){
 		y += _y * PlayerStats._speed;
 	}
-	else if(y > 2000){
+	else if(y > 2000 && _y == -1){
 		y += _y * PlayerStats._speed;	
 	}
 	x += _x * PlayerStats._speed;
@@ -63,10 +66,9 @@ function move(_x, _y){
 	return true;
 }
 
-function attack(){
+function attack(start_time){
 	_attack = true;
-	
-	if(!keyboard_check_direct(vk_space)){
+	if(!keyboard_check_pressed(vk_space) && _attackTimer > 10)  {
 		_input = false;
 		return false;	
 	}	

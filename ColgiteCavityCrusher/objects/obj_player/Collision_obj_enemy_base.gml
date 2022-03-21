@@ -8,9 +8,9 @@ with(other){
 	}
 	show_debug_message(self.EnemyStats.hp);
 	if(obj_player._attack && obj_player.counts){
-		counts =false;
+		obj_player.counts =false;
 		
-		take_damage();
+		take_damage(50);
 		
 		if(self.EnemyStats.hp == 0 && !gotPoint){
 			obj_player.points += 100;	

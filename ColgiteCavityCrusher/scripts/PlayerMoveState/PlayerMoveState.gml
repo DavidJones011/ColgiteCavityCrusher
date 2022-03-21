@@ -45,22 +45,39 @@ function PlayerMoveState(_id = "Move", _sprite = undefined, _speed = 2) : State(
 	
 	static handle_input = function(_sm, _input){
 		var owner = _sm.get_owner();
-		if(_input == "up"){
+		if(_input == "W"){
 			//owner.move(0, -1);
 			_y = -1;
 		}
-		if(_input == "down"){
+		else if(_input == "S"){
 			_y = 1;
 			//owner.move(0, 1);
 		}
-		if(_input == "right"){
+		else if(_input == "D"){
 			_x = 1;
 			//owner.move(1, 0);
 		}
-		if(_input == "left"){
+		else if(_input == "A"){
 			_x = -1;
 			//owner.move(-1, 0);
 		}
+		else if(_input == "AW"){
+			_x = -1;
+			_y = -1;
+		}
+		else if(_input == "AS"){
+			_x = -1;
+			_y = 1;
+		}
+		else if(_input == "DW"){
+			_x = 1;
+			_y = -1;
+		}
+		else if(_input == "DS"){
+			_x = 1;
+			_y = 1;
+		}
+		
 		if(_input == "attack"){
 			_sm.set_state("Attack");
 		}
@@ -68,4 +85,4 @@ function PlayerMoveState(_id = "Move", _sprite = undefined, _speed = 2) : State(
 		
 		
 	}
-}
+}	
