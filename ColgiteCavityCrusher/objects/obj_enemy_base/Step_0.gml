@@ -3,3 +3,4 @@
 
 enemy_sm.step_sm();
 depth = CalcDepthFromY();
+update_move();

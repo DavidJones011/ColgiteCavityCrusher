@@ -10,39 +10,62 @@ EnemyStats =
 	attackSpeed : 1000,
 	attackSpeedDev : 700,
 	distToAttack : 2300,
-	target : obj_player,
-	spawner : undefined
+	targetObj : obj_player,
+	targetPos : undefined,
+	spawner : undefined,
+	curSpeed : 10.0,
+	maxSpeed : 12.0,
+	minSpeed : 8.0,
+	isMoving : false
 }
 
 // create state machine for enemy
 // make sure to add states to this state machine
 enemy_sm = new StateMachine(self);
 
-/* moves the instance towards a spot near the target
- * return true when finished moving
- * return false when not finished
- */
-function move(_target, _speed = 2, _dist_threshold = 5)
+function move_to_random()
 {
-	if(is_undefined(_target))
-		return false;
-		
-	var spot = FindSpotAtTarget(self, self.EnemyStats.target, self.EnemyStats.distToAttack);	
-	if (distance_to_point(spot[0], spot[1]+300) > 100)
+	var destination = FindRandomSpotInCamera(view_camera[0], 1800, 300);
+	if(is_array(destination))
 	{
-		mp_potential_step(spot[0], spot[1]+300, _speed, all);
-		//mp_linear_step_object(spot[0], spot[1]+300, _speed, all);
+		EnemyStats.targetPos = destination;
+		EnemyStats.curSpeed = random_range(EnemyStats.minSpeed, EnemyStats.maxSpeed);
+		EnemyStats.isMoving = true;
+	}
+	return EnemyStats.isMoving;
+}
+
+function move_next_to_target()
+{
+	var destination = FindSpotNextToTarget(self, EnemyStats.targetObj, EnemyStats.distToAttack);
+	
+	if(is_array(destination))
+	{
+		EnemyStats.targetPos = destination;
+		EnemyStats.curSpeed = random_range(EnemyStats.minSpeed, EnemyStats.maxSpeed);
+		EnemyStats.isMoving = true;
+	}
+	return EnemyStats.isMoving;
+}
+
+function update_move()
+{
+	if(is_undefined(EnemyStats.targetPos))
+		return;
+		
+	if (distance_to_point(EnemyStats.targetPos[0], EnemyStats.targetPos[1]) > 50)
+	{
+		mp_potential_step(EnemyStats.targetPos[0], EnemyStats.targetPos[1], EnemyStats.curSpeed, all);
 		if(direction > 90 && direction < 270)
-		{
 			image_xscale = 1;
-		}
 		else
-		{
 			image_xscale = -1;
-		}
-		return true;
-	}	
-	return false;
+	}
+	else
+	{
+		enemy_sm.send_input("goal_reached");
+		EnemyStats.isMoving = false;
+	}
 }
 
 /* send damage to the enemy object
@@ -51,6 +74,7 @@ function move(_target, _speed = 2, _dist_threshold = 5)
  */
 function take_damage(_damage = 10)
 {	
+	self.EnemyStats.isMoving = false;
 	self.EnemyStats.hp -= _damage;
 	self.EnemyStats.hp = clamp(self.EnemyStats.hp, 0, self.EnemyStats.maxHealth);
 	
@@ -66,30 +90,6 @@ function take_damage(_damage = 10)
 	}
 }
 
-/* 
- * wrapper to call instance_place for player collision
- */
-function check_player_hit()
-{
-	return instance_place(x,y,obj_player)
-}
-
-/* 
- */
-function cleanup_player_hit(_instance_id = noone)
-{
-	if(_instance_id != noone)
-		instance_destroy(_instance_id);		
-}
-
-/* get the current frame image of the sprite
- */
-function get_sprite_frame_count()
-{
-	
-	return sprite_get_number(sprite_index);
-}
-
 /* spawn a projectile
  */
 function spawn_projectile(_projectile)
@@ -102,7 +102,7 @@ function spawn_projectile(_projectile)
 	with(instance_create_layer( posX, posY, "Projectiles", _projectile))
 	{
 		var targetY = other.EnemyStats.target.y - sprite_height/2;
-		depth = CalcDepthFromY(min(other.EnemyStats.target.y, posY));
+		depth = CalcDepthFromY(/*min(other.EnemyStats.target.y, posY)*/);
 		speed = 70;
 		var dirX = other.EnemyStats.target.x - posX;
 		var dirY = targetY - posY;
@@ -117,13 +117,6 @@ function spawn_projectile(_projectile)
 			
 		show_debug_message(string(direction));
 	}	
-}
-
-/* check to see if the current frame on the sprite has past the given frame index
- */
-function has_passed_frame(_frame_index)
-{
-	return image_index > _frame_index;
 }
 
 /* sets the spawner for this enemy object

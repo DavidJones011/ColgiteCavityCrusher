@@ -11,7 +11,7 @@ function PlayAnimationOnceState(_id = "ProjectileAttack", _sprite = undefined, _
 	{
 		if(!is_undefined(sprite))
 		{
-			_sm.get_owner().sprite_index = sprite;	
+			_sm.get_owner().sprite_index = sprite;
 		}
 	}
 	

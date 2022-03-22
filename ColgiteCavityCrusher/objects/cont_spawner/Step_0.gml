@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 var spawnX = x;
-var spawnY = y+random_range(-300,300);
+var spawnY = y + random_range(-300,300);
 
 if((current_time - prev_time)*0.001 > time_to_spawn && (current_spawns < spawn_limit) && distance_to_object(obj_player) > 500)
 {

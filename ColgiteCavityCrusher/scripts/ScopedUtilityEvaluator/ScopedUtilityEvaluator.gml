@@ -10,9 +10,10 @@ function ScopedUtilityEvaluator() constructor
 	{
 		if(is_undefined(_name))
 			return;
-			
+		
+		adj_max = max(_max_value, 0.001);
 		adj_value = clamp(_value, 0, _max_value);
-		utility = adj_value/_max_value * _factor;		
+		utility = adj_value/adj_max * _factor;		
 		if(utility > priority_utility)
 		{
 			priority_utility = utility;
@@ -26,8 +27,9 @@ function ScopedUtilityEvaluator() constructor
 		if(is_undefined(_name))
 			return;
 			
+		adj_max = max(_max_value, 0.001);
 		adj_value = clamp(_value, 0, _max_value);
-		utility = (1.0 - (adj_value/_max_value)) * _factor;
+		utility = (1.0 - (adj_value/adj_max)) * _factor;
 		if(utility > priority_utility)
 		{
 			priority_utility = utility;
@@ -40,8 +42,10 @@ function ScopedUtilityEvaluator() constructor
 	{
 		if(is_undefined(_name))
 			return;
+			
+		adj_max = max(_max_value, 0.001);
 		adj_value = clamp(_value, 0, _max_value);
-		utility = power(adj_value/_max_value, 2) * _factor;
+		utility = power(adj_value/adj_max, 2) * _factor;
 		if(utility > priority_utility)
 		{
 			priority_utility = utility;
@@ -55,8 +59,9 @@ function ScopedUtilityEvaluator() constructor
 		if(is_undefined(_name))
 			return;
 			
+		adj_max = max(_max_value, 0.001);
 		adj_value = clamp(_value, 0, _max_value);
-		utility = (1.0 - power((adj_value/_max_value), 2)) * _factor;
+		utility = (1.0 - power((adj_value/adj_max), 2)) * _factor;
 		if(utility > priority_utility)
 		{
 			priority_utility = utility;
