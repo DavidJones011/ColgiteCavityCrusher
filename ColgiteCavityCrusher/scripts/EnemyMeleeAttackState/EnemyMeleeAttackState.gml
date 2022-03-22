@@ -2,14 +2,13 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
 // Initial attack state that can lead to chained combos
-function EnemyMeleeAttackState(_id = "MeleeAttack", _sprite = undefined, _mask = undefined, _damage = 10, _followup = undefined) : State(_id) constructor
+function EnemyMeleeAttackState(_id = "MeleeAttack", _sprite = undefined, _damage = 10, _hit_frame = 0, _followup = undefined) : State(_id) constructor
 {
-	followUpState = _followup
-	cachedMask = undefined
-	damage = _damage
-	hasHit = false
+	followUpState = _followup;
+	damage = _damage;
 	sprite = _sprite;
-	mask = _mask;
+	hasHit = false;
+	hitFrame = _hit_frame;
 	
 	static enter_state = function(_sm)
 	{
@@ -18,40 +17,22 @@ function EnemyMeleeAttackState(_id = "MeleeAttack", _sprite = undefined, _mask =
 		{
 			_sm.get_owner().sprite_index = sprite;
 		}
-		
-		// set the sprite mask
-		if(!is_undefined(mask))
-		{
-			cachedMask = _sm.get_owner().mask_index;
-			_sm.get_owner().mask_index = mask;
-		}
-		
 		hasHit = false;
 		start_time = current_time;
 	}
 	
 	static step_state = function(_sm)
 	{
-		if(!hasHit)
+		/*var owner = _sm.get_owner();
+		if(!hasHit && owner.has_passed_frame(hitFrame))
 		{
-			var hit = _sm.get_owner().check_player_hit();
-			if(hit != noone)
-			{
-				with(hit)
-				{
-					// TODO: hurt the player
-					show_debug_message("HIT")
-				}
-				hasHit = true;
-			}
-			//_sm.get_owner().cleanup_player_hit(hit);
-		}
+			owner.spawn_projectile(projectile)
+			hasThrown = true;
+		}*/
 	}
 	
 	static exit_state = function(_sm)
 	{
-		// restore previous mask
-		mask_index = cachedMask
 	}
 	
 	static handle_input = function(_sm, _input="")

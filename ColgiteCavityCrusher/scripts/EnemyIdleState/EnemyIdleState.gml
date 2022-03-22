@@ -39,7 +39,7 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 		}
 				
 		_sm.set_state(utility.get_utility_name());
-		show_debug_message(utility.get_utility());
+		//show_debug_message(utility.get_utility());
 		delete utility;
 	}
 	

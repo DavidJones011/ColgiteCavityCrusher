@@ -7,9 +7,9 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 242,
+  "bbox_left": 236,
   "bbox_right": 741,
-  "bbox_top": 182,
+  "bbox_top": 161,
   "bbox_bottom": 803,
   "HTile": false,
   "VTile": false,
@@ -136,7 +136,11 @@
     "autoRecord": true,
     "volume": 1.0,
     "length": 34.0,
-    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
+    "events": {"Keyframes":[
+        {"id":"25e00094-4b3f-434a-ab4f-25ddd2879287","Key":22.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Events":[
+                "Enemy_Throw",
+              ],"resourceVersion":"1.0","resourceType":"MessageEventKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<MessageEventKeyframe>",},
+      ],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[

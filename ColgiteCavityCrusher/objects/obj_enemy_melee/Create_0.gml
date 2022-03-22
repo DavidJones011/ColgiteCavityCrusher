@@ -4,13 +4,14 @@
 event_inherited();
 
 //change stats
-EnemyStats.attackSpeed = 2500;
+EnemyStats.attackSpeed = 1000;
+EnemyStats.attack_dev = 500;
 EnemyStats.distToAttack = 350;
 
 // create ranged enemy states
-idle_state = new EnemyIdleState("Idle", spr_rangedenemy_idle);
+idle_state = new EnemyIdleState("Idle", spr_meleeenemy_idle);
 chase_state = new EnemyMoveToState("MoveTo", spr_rangedenemy_walk, 10, 500);
-attack_state = new EnemyMeleeAttackState("Attack", spr_rangedenemy_attack, spr_rangedenemy_attack, 10, undefined);
+attack_state = new PlayAnimationOnceState("Attack", spr_meleeenemy_attack, "Idle");
 hurt_state = new PlayAnimationOnceState("Hurt", spr_rangedenemy_hurt, "Idle");
 death_state = new EnemyDeathState("Death", spr_rangedenemy_death);
 

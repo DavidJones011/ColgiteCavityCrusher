@@ -134,3 +134,21 @@ function set_spawner(_spawner)
 		return;		
 	self.EnemyStats.spawner = _spawner;
 }
+
+/* casts a rectangle collision to hit something */
+function hit(_attackDist, _height, _offsetx, _offsety, _damage)
+{
+	x2 = x + (_offsetx - sprite_get_width(sprite_index) * 0.5) * image_xscale;
+	x1 = x2 - (_attackDist * image_xscale);
+	y1 = y + _offsety - (sprite_get_height(sprite_index) - _height) * 0.5;
+	y2 = y1 + _height;
+
+	var obj = collision_rectangle(x1, y1, x2, y2, obj_player, 0, 0);
+	if(obj != noone)
+	{
+		with(obj)
+		{
+			take_damage(10);
+		}
+	}
+}
