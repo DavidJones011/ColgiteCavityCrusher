@@ -26,22 +26,16 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 		var utility = new ScopedUtilityEvaluator();
 	
 		if(!is_undefined(stats.targetObj))
-		{
-			//var spot = FindSpotAtTarget(_sm.get_owner(), stats.targetObj, stats.distToAttack);
-			
+		{			
 			var target_pos = [stats.targetObj.x, stats.targetObj.y];
 			//_sm.get_owner().image_xscale = sign(_sm.get_owner().x - stats.target.x);
 			var dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, target_pos[0], target_pos[1]);
 			utility.add_utility_squared("MoveTo", dist, 1000);
-			utility.add_utility_linear("Idle", dist, 800);
-			if(current_time - start_time >= stats.attackSpeed + attack_dev)
-			{
-				utility.add_utility_linear("Attack", 800, dist);
-			}
+			utility.add_utility_squared_peak("Attack", GetProjectedAttackDist(stats.targetObj, _sm.get_owner(), 200), stats.distToAttack);
 		}
-				
-		_sm.set_state(utility.get_utility_name());
-		//show_debug_message(utility.get_utility());
+		
+		if(!is_undefined(utility.get_utility_name(0.1)))
+			_sm.set_state(utility.get_utility_name(0.1));
 		delete utility;
 	}
 	

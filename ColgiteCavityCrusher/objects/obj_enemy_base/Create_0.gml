@@ -48,6 +48,12 @@ function move_next_to_target()
 	return EnemyStats.isMoving;
 }
 
+function cancel_move()
+{
+	EnemyStats.targetPos = undefined;
+	EnemyStats.isMoving = false;
+}
+
 function update_move()
 {
 	if(is_undefined(EnemyStats.targetPos))
@@ -74,7 +80,7 @@ function update_move()
  */
 function take_damage(_damage = 10)
 {	
-	self.EnemyStats.isMoving = false;
+	cancel_move();
 	self.EnemyStats.hp -= _damage;
 	self.EnemyStats.hp = clamp(self.EnemyStats.hp, 0, self.EnemyStats.maxHealth);
 	
@@ -101,10 +107,10 @@ function spawn_projectile(_projectile)
 	var posY = other.y - other.sprite_height/2;
 	with(instance_create_layer( posX, posY, "Projectiles", _projectile))
 	{
-		var targetY = other.EnemyStats.target.y - sprite_height/2;
-		depth = CalcDepthFromY(/*min(other.EnemyStats.target.y, posY)*/);
+		var targetY = other.EnemyStats.targetObj.y - sprite_height/2;
+		depth = CalcDepthFromY();
 		speed = 70;
-		var dirX = other.EnemyStats.target.x - posX;
+		var dirX = other.EnemyStats.targetObj.x - posX;
 		var dirY = targetY - posY;
 		var offset = 0.0;
 
@@ -131,12 +137,15 @@ function set_spawner(_spawner)
 /* casts a rectangle collision to hit something */
 function hit(_attackDist, _height, _offsetx, _offsety, _damage)
 {
+	if(is_undefined(EnemyStats.targetObj))
+		return;
+			
 	x2 = x + (_offsetx - sprite_get_width(sprite_index) * 0.5) * image_xscale;
 	x1 = x2 - (_attackDist * image_xscale);
 	y1 = y + _offsety - (sprite_get_height(sprite_index) - _height) * 0.5;
 	y2 = y1 + _height;
 
-	var obj = collision_rectangle(x1, y1, x2, y2, obj_player, 0, 0);
+	var obj = collision_rectangle(x1, y1, x2, y2, EnemyStats.targetObj, 0, 0);
 	if(obj != noone)
 	{
 		with(obj)

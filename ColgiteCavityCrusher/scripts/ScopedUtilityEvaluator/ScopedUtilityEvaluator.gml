@@ -11,9 +11,9 @@ function ScopedUtilityEvaluator() constructor
 		if(is_undefined(_name))
 			return;
 		
-		adj_max = max(_max_value, 0.001);
-		adj_value = clamp(_value, 0, _max_value);
-		utility = adj_value/adj_max * _factor;		
+		var adj_max = max(_max_value, 0.001);
+		var adj_value = clamp(_value, 0, _max_value);
+		var utility = adj_value/adj_max * _factor;		
 		if(utility > priority_utility)
 		{
 			priority_utility = utility;
@@ -27,9 +27,9 @@ function ScopedUtilityEvaluator() constructor
 		if(is_undefined(_name))
 			return;
 			
-		adj_max = max(_max_value, 0.001);
-		adj_value = clamp(_value, 0, _max_value);
-		utility = (1.0 - (adj_value/adj_max)) * _factor;
+		var adj_max = max(_max_value, 0.001);
+		var adj_value = clamp(_value, 0, _max_value);
+		var utility = (1.0 - (adj_value/adj_max)) * _factor;
 		if(utility > priority_utility)
 		{
 			priority_utility = utility;
@@ -43,9 +43,9 @@ function ScopedUtilityEvaluator() constructor
 		if(is_undefined(_name))
 			return;
 			
-		adj_max = max(_max_value, 0.001);
-		adj_value = clamp(_value, 0, _max_value);
-		utility = power(adj_value/adj_max, 2) * _factor;
+		var adj_max = max(_max_value, 0.001);
+		var adj_value = clamp(_value, 0, _max_value);
+		var utility = power(adj_value/adj_max, 2) * _factor;
 		if(utility > priority_utility)
 		{
 			priority_utility = utility;
@@ -59,9 +59,9 @@ function ScopedUtilityEvaluator() constructor
 		if(is_undefined(_name))
 			return;
 			
-		adj_max = max(_max_value, 0.001);
-		adj_value = clamp(_value, 0, _max_value);
-		utility = (1.0 - power((adj_value/adj_max), 2)) * _factor;
+		var adj_max = max(_max_value, 0.001);
+		var adj_value = clamp(_value, 0, _max_value);
+		var utility = (1.0 - power((adj_value/adj_max), 2)) * _factor;
 		if(utility > priority_utility)
 		{
 			priority_utility = utility;
@@ -69,9 +69,29 @@ function ScopedUtilityEvaluator() constructor
 		}
 	}
 	
-	static get_utility_name = function()
+	static add_utility_squared_peak = function(_name, _value, _peak_value, _factor = 1.0)
 	{
-		return priority_name;
+		if(is_undefined(_name))
+			return;
+			
+		var adj_peak = max(_peak_value, 0.001);
+		var adj_value = clamp(_value, 0, _value);	
+		var peak_squared = adj_peak * adj_peak;			
+		var utility = (((-1.0 / peak_squared) * power(adj_value - adj_peak, 2)) + 1.0) * _factor;
+		if(utility > priority_utility)
+		{
+			priority_utility = utility;
+			priority_name = _name;
+		}
+	}
+	
+	/* returns the utility name that has the highest priority as long as it meets the threshold */
+	static get_utility_name = function(_required_threshold = 0.0)
+	{
+		if(priority_utility >= _required_threshold)
+			return priority_name;
+		else
+			return undefined;
 	}
 	
 	static get_utility = function()
