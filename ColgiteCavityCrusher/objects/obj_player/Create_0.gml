@@ -54,14 +54,16 @@ function move(_x, _y){
 	}
 	
 	
-	
 	if(_y == 1 && y < 4000){
 		y += _y * PlayerStats._speed;
 	}
 	else if(y > 2000 && _y == -1){
 		y += _y * PlayerStats._speed;	
 	}
-	x += _x * PlayerStats._speed;
+	if(x+_x*PlayerStats._speed > cont_camera.posX && x+_x*PlayerStats._speed < (cont_camera.posX+cont_camera.cameraWidth*cont_camera.zoomFactor))
+	{	
+		x += _x * PlayerStats._speed;
+	}
 	
 	return true;
 }
