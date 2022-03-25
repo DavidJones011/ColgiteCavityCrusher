@@ -6,7 +6,7 @@
     "path": "folders/Scripts/EnemyStates.yy",
   },
   "resourceVersion": "1.0",
-  "name": "EnemyMoveToState",
+  "name": "EnemyMoveToTargetState",
   "tags": [],
   "resourceType": "GMScript",
 }

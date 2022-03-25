@@ -1,8 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
-
-prev_time = 0;
 current_spawns = 0;
+disabled = false;
 
 function remove_enemy(_enemy)
 {
@@ -11,9 +10,36 @@ function remove_enemy(_enemy)
 		
 	instance_destroy(_enemy);
 	current_spawns--;
+	
+	if(current_spawns <= 0)
+	{
+		cont_camera.set_target(obj_player);	
+	}
 }
 
-function add_enemy()
+function spawn_enemies()
 {
-	current_spawns++;	
+	disabled = true;
+	for(var i = 0; i < melee_enemies; i++)
+	{
+		var spot = FindSpotOutsideOfCamera(view_camera[0], 1800, 400);
+		var inst = instance_create_depth(spot[0], spot[1], 0, obj_enemy_melee);
+		with(inst)
+		{
+			inst.set_spawner(other);
+		}
+		current_spawns++;
+	}
+	
+	for(var i = 0; i < ranged_enemies; i++)
+	{
+		var spot = FindSpotOutsideOfCamera(view_camera[0], 1800, 400);
+		var inst = instance_create_depth(spot[0], spot[1], 0, obj_enemy_ranged);
+		with(inst)
+		{
+			inst.set_spawner(other);
+		}
+		current_spawns++;
+	}
+	
 }

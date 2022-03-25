@@ -1,12 +1,13 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
-// simple idle state for enemies
+// simple idle state for ranged nemies
 function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) constructor
 {
 	sprite = _sprite;
 	start_time = 0;
 	attack_dev = 0;
+	update_time = 0;
 	
 	static enter_state = function(_sm)
 	{
@@ -17,26 +18,44 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 		}
 		var stats = _sm.get_owner().EnemyStats;		
 		start_time = current_time;
+		update_time = start_time;
 		attack_dev = random_range(-stats.attackSpeedDev, stats.attackSpeedDev);
 	}
 	
 	static step_state = function(_sm)
-	{
-		var stats = _sm.get_owner().EnemyStats;		
-		var utility = new ScopedUtilityEvaluator();
-	
-		if(!is_undefined(stats.targetObj))
-		{			
-			var target_pos = [stats.targetObj.x, stats.targetObj.y];
-			//_sm.get_owner().image_xscale = sign(_sm.get_owner().x - stats.target.x);
-			var dist = point_distance(_sm.get_owner().x, _sm.get_owner().y, target_pos[0], target_pos[1]);
-			utility.add_utility_squared("MoveTo", dist, 1000);
-			utility.add_utility_squared_peak("Attack", GetProjectedAttackDist(stats.targetObj, _sm.get_owner(), 200), stats.distToAttack);
-		}
+	{		
+		var stats = _sm.get_owner().EnemyStats;
+		var rand = random_range(0,10);
+		var attack_val = GetProjectedAttackDist(stats.targetObj, _sm.get_owner(), 100);
 		
-		if(!is_undefined(utility.get_utility_name(0.1)))
-			_sm.set_state(utility.get_utility_name(0.1));
-		delete utility;
+		_sm.get_owner().image_xscale = -sign(stats.targetObj.x - _sm.get_owner().x);
+			
+		if((current_time - update_time) > 500)
+		{
+			update_time = current_time;
+			if(attack_val > stats.distToAttack * 0.6)
+			{
+				if(rand > -1 && rand < 2)
+				{
+					_sm.set_state("MoveToRand");	
+				}
+				else
+				{
+					_sm.set_state("Attack");
+				}
+			}
+			else
+			{
+				if(rand > -1 && rand < 5)
+				{
+					_sm.set_state("MoveToRand");
+				}
+				else if(rand > 4 && rand <  11)
+				{
+					_sm.set_state("MoveToTarget");
+				}
+			}
+		}
 	}
 	
 	static exit_state = function(_sm)

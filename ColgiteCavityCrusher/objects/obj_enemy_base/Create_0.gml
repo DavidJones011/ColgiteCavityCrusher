@@ -121,7 +121,7 @@ function spawn_projectile(_projectile)
 			
 		direction = radtodeg(arctan(-dirY/dirX)) + offset;
 			
-		show_debug_message(string(direction));
+		//show_debug_message(string(direction));
 	}	
 }
 

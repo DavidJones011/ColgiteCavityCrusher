@@ -1,8 +1,8 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
-// Move state
-function EnemyMoveToState(_id = "MoveTo", _sprite = undefined) : State(_id) constructor
+// Move to location next to the target
+function EnemyMoveToTargetState(_id = "MoveTo", _sprite = undefined) : State(_id) constructor
 {
 	sprite = _sprite;
 	
@@ -14,17 +14,8 @@ function EnemyMoveToState(_id = "MoveTo", _sprite = undefined) : State(_id) cons
 			_sm.get_owner().sprite_index = sprite;
 		}
 		
-		var moving = false;
-		var value = random_range(0,5);
-		if(value > -1 && value < 2)
-		{
-			moving = _sm.get_owner().move_next_to_target();
-		}
-		else
-		{
-			moving = _sm.get_owner().move_to_random();
-		}
-		
+		var moving = _sm.get_owner().move_next_to_target();
+
 		// failed to find spot
 		if(moving == false)
 		{
@@ -34,7 +25,10 @@ function EnemyMoveToState(_id = "MoveTo", _sprite = undefined) : State(_id) cons
 	
 	static step_state = function(_sm)
 	{
-		var stats = _sm.get_owner().EnemyStats;
+		
+		
+		
+		/*var stats = _sm.get_owner().EnemyStats;
 		var utility = new ScopedUtilityEvaluator();
 		utility.add_utility_squared_peak("Idle", GetProjectedAttackDist(stats.targetObj, _sm.get_owner(), 200), 200);
 		
@@ -44,7 +38,7 @@ function EnemyMoveToState(_id = "MoveTo", _sprite = undefined) : State(_id) cons
 			_sm.get_owner().cancel_move();
 			_sm.set_state(state);
 		}
-		delete utility;
+		delete utility;*/
 	}
 	
 	static exit_state = function(_sm)

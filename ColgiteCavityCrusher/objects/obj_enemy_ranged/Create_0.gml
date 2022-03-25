@@ -8,7 +8,8 @@ EnemyStats.attackSpeed = 2500;
 
 // create ranged enemy states
 idle_state = new EnemyIdleState("Idle", spr_rangedenemy_idle);
-chase_state = new EnemyMoveToState("MoveTo", spr_rangedenemy_walk);
+walk_rand_state = new EnemyMoveToRandomState("MoveToRand", spr_rangedenemy_walk);
+walk_target_state = new EnemyMoveToTargetState("MoveToTarget", spr_rangedenemy_walk);
 attack_state = new PlayAnimationOnceState("Attack", spr_rangedenemy_attack, "Idle");
 hurt_state = new PlayAnimationOnceState("Hurt", spr_rangedenemy_hurt, "Idle");
 death_state = new EnemyDeathState("Death", spr_rangedenemy_death);
@@ -16,7 +17,8 @@ death_state = new EnemyDeathState("Death", spr_rangedenemy_death);
 // add the states to the state machine
 enemy_sm.add_state(idle_state);
 enemy_sm.add_state(hurt_state);
-enemy_sm.add_state(chase_state);
+enemy_sm.add_state(walk_rand_state);
+enemy_sm.add_state(walk_target_state);
 enemy_sm.add_state(attack_state);
 enemy_sm.add_state(death_state);
 enemy_sm.set_default_state("Idle");
