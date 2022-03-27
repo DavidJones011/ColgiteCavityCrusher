@@ -3,23 +3,22 @@
 with(other){
 	var gotPoint = true;
 	
-	//if(self.EnemyStats.hp > 0){
-	//		gotPoint = false;
-	//}
+	if(self.EnemyStats.hp > 0){
+			gotPoint = false;
+	}
 	show_debug_message(self.EnemyStats.hp);
 	if(obj_player._attack && obj_player.counts){
-		obj_player.counts =false;
+		obj_player.counts = false;
 		
-		take_damage(50);
+		take_damage(30);
 		
-		if(self.EnemyStats.hp <= 0)
-		//&& !gotPoint)
+		if(self.EnemyStats.hp <= 0&& !gotPoint)
 		{
 			obj_player.points += 100;	
-			//gotPoint = true;
+			gotPoint = true;
 		}
 	}
 	
 	
-	obj_player._attack = false;
+	//obj_player._attack = false;
 }

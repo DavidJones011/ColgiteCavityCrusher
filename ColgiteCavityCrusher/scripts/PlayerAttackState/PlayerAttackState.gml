@@ -9,6 +9,7 @@ function PlayerAttackState(_id = "Attack", _sprite = undefined) : State(_id) con
 	//have timer until I have animations
 	start_time = 0;
 	duration = 1000;
+	animTimer = 0;
 	
 	static enter_state = function(_sm)
 	{
@@ -17,15 +18,28 @@ function PlayerAttackState(_id = "Attack", _sprite = undefined) : State(_id) con
 		{
 			_sm.get_owner().sprite_index = sprite;	
 		}
+		animTimer = 0;
 		start_time = current_time;
 	}
 	
 	static step_state = function(_sm)
 	{		
-		
+		animTimer++;
 		if(!_sm.get_owner().attack()){
-		
+			if(_sm.get_owner().sprite_index = spr_player_attack_loop){
+				_sm.get_owner().sprite_index = spr_player_attack3;
+				_sm.get_owner().image_index = 17;
+			}
 			_sm.set_state("Recover");	
+		}
+		if(animTimer = 10){
+			_sm.get_owner().sprite_index = spr_player_attack2;	
+		}
+		else if(animTimer = 21){
+			_sm.get_owner().sprite_index = spr_player_attack3;
+		}
+		else if(animTimer = 25){
+			_sm.get_owner().sprite_index = spr_player_attack_loop;	
 		}
 	}
 	

@@ -6,6 +6,6 @@ if(sprite_index == spr_player_recovery){
 }
 player_sm.send_input("anim_end");
 
-if(sprite_index == spr_player_attack){
+if(sprite_index == spr_player_attack || sprite_index == spr_player_attack_loop || sprite_index == spr_player_attack2 ||sprite_index == spr_player_attack3 ){
 	counts = true;
 }
