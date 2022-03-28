@@ -24,21 +24,7 @@ function EnemyMoveToTargetState(_id = "MoveTo", _sprite = undefined) : State(_id
 	}
 	
 	static step_state = function(_sm)
-	{
-		
-		
-		
-		/*var stats = _sm.get_owner().EnemyStats;
-		var utility = new ScopedUtilityEvaluator();
-		utility.add_utility_squared_peak("Idle", GetProjectedAttackDist(stats.targetObj, _sm.get_owner(), 200), 200);
-		
-		var state = utility.get_utility_name(0.6);
-		if(!is_undefined(state))
-		{
-			_sm.get_owner().cancel_move();
-			_sm.set_state(state);
-		}
-		delete utility;*/
+	{	
 	}
 	
 	static exit_state = function(_sm)

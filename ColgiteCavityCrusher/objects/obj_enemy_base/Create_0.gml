@@ -80,18 +80,21 @@ function update_move()
  */
 function take_damage(_damage = 10)
 {	
+	if(self.EnemyStats.hp == 0)
+		return;
+	
 	cancel_move();
 	self.EnemyStats.hp -= _damage;
 	self.EnemyStats.hp = clamp(self.EnemyStats.hp, 0, self.EnemyStats.maxHealth);
 	
 	if(self.EnemyStats.hp == 0)
 	{
-		//audio_play_sound(snd_critcal_hit, 5, false);
+		audio_play_sound(snd_critcal_hit, 5, false);
 		self.enemy_sm.set_state("Death");
 	}
 	else
 	{
-		//audio_play_sound(snd_normal_hit, 5, false);
+		audio_play_sound(snd_normal_hit, 5, false);
 		self.enemy_sm.set_state("Hurt");
 	}
 }

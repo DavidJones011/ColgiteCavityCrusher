@@ -22,6 +22,7 @@ function EnemyMoveToRandomState(_id = "MoveTo", _sprite = undefined) : State(_id
 		{
 			_sm.set_state("Idle");
 		}
+		update_time = current_time;
 	}
 	
 	static step_state = function(_sm)
@@ -30,9 +31,9 @@ function EnemyMoveToRandomState(_id = "MoveTo", _sprite = undefined) : State(_id
 		{
 			update_time = current_time;
 			var stats = _sm.get_owner().EnemyStats;
-			var attack_val = GetProjectedAttackDist(stats.targetObj, _sm.get_owner(), 100);
-			var rand = random_range(0,1);
-			if(attack_val > 0.8 && rand > -1 && rand < 1)
+			var attack_val = GetProjectedAttackDist(stats.targetObj, _sm.get_owner(), stats.distToAttack, 600);
+			var rand = random_range(0,2);
+			if(attack_val > 0.3 && rand > -1 && rand < 2)
 			{
 				_sm.set_state("MoveToTarget");
 			}	

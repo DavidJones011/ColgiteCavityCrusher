@@ -26,14 +26,14 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 	{		
 		var stats = _sm.get_owner().EnemyStats;
 		var rand = random_range(0,10);
-		var attack_val = GetProjectedAttackDist(stats.targetObj, _sm.get_owner(), 100);
+		var attack_val = GetProjectedAttackDist(stats.targetObj, _sm.get_owner(), stats.distToAttack, 600);
 		
 		_sm.get_owner().image_xscale = -sign(stats.targetObj.x - _sm.get_owner().x);
 			
 		if((current_time - update_time) > 500)
 		{
 			update_time = current_time;
-			if(attack_val > stats.distToAttack * 0.6)
+			if(attack_val > 0.4)
 			{
 				if(rand > -1 && rand < 2)
 				{
