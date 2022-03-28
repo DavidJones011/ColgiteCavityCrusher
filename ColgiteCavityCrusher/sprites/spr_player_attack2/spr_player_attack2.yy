@@ -62,7 +62,7 @@
     "spriteId": {"name":"spr_player_attack2","path":"sprites/spr_player_attack2/spr_player_attack2.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 30.0,
+    "playbackSpeed": 36.0,
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,

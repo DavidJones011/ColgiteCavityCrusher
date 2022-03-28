@@ -46,9 +46,9 @@ if(_input){
 	if(_key != ""){
 		player_sm.send_input(_key);
 	}
-	_attackTimer++;
+	_stopAttackTimer++;
 	if(keyboard_check_pressed(vk_space)){
-		_attackTimer = 0;
+		_stopAttackTimer = 0;
 		player_sm.send_input("attack");
 	}
 	

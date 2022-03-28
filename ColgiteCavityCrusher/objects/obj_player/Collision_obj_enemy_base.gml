@@ -1,8 +1,7 @@
-/// @description Insert description here
+ /// @description Insert description here
 // You can write your code in this editor
 with(other){
 	var gotPoint = true;
-	
 	if(self.EnemyStats.hp > 0){
 			gotPoint = false;
 	}
@@ -12,13 +11,11 @@ with(other){
 		
 		take_damage(30);
 		
-		if(self.EnemyStats.hp <= 0&& !gotPoint)
+		if(self.EnemyStats.hp <= 0 && !gotPoint)
 		{
 			obj_player.points += 100;	
 			gotPoint = true;
 		}
 	}
-	
-	
-	//obj_player._attack = false;
+	obj_player._attack = false;
 }

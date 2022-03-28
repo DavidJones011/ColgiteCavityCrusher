@@ -10,6 +10,7 @@ _death = false;
 _attack = false;
 _input = true;
 counts = true;
+_stopAttackTimer = 0;
 _attackTimer = 0;
 //animEnd = false;
 
@@ -70,10 +71,24 @@ function move(_x, _y){
 
 function attack(start_time){
 	_attack = true;
-	if(!keyboard_check_pressed(vk_space) && _attackTimer > 10)  {
+	_attackTimer++;
+	attackBool = (_attackTimer-10)%11==0;
+	attackBool = (_attackTimer -37)%12 == 0;
+	if(!keyboard_check_pressed(vk_space) && _stopAttackTimer > 10)  {
+		_attack = false;
 		_input = false;
+		counts = true; 
 		return false;	
-	}	
+	}		
+	//else if(_attackTimer == 10 ){
+	//	counts=true;
+	//}
+	//else if((_attackTimer-10)%11==0 && (_attackTimer-10)>0){
+	//	counts = true;
+	//}
+	//else if((_attackTimer-37)>0 &&(_attackTimer-37)%12==0){
+	//	counts = true;
+	//}
 	return true;
 }
 
