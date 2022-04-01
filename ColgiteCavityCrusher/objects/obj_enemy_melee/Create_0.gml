@@ -7,6 +7,7 @@ event_inherited();
 EnemyStats.attackSpeed = 400000;
 EnemyStats.attack_dev = 10000;
 EnemyStats.distToAttack = 400;
+EnemyStats.hurtSound = snd_hurt_03;
 
 // create ranged enemy states
 idle_state = new EnemyIdleState("Idle", spr_meleeenemy_idle);

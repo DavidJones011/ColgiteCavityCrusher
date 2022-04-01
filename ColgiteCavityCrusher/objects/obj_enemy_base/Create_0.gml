@@ -16,7 +16,8 @@ EnemyStats =
 	curSpeed : 10.0,
 	maxSpeed : 12.0,
 	minSpeed : 8.0,
-	isMoving : false
+	isMoving : false,
+	hurtSound : snd_hurt_02
 }
 
 // create state machine for enemy
@@ -94,11 +95,14 @@ function take_damage(_damage = 10)
 	if(self.EnemyStats.hp == 0)
 	{
 		audio_play_sound(snd_critcal_hit, 5, false);
+		audio_play_sound(EnemyStats.hurtSound, 5, false);
 		self.enemy_sm.set_state("Death");
 	}
 	else
 	{
 		audio_play_sound(snd_normal_hit, 5, false);
+		if(random_range(0, 10) <= 4.0)
+			audio_play_sound(EnemyStats.hurtSound, 5, false);
 		self.enemy_sm.set_state("Hurt");
 	}
 }
