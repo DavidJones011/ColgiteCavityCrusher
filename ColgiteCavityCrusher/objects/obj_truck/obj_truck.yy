@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_cat_example2",
-    "path": "sprites/spr_cat_example2/spr_cat_example2.yy",
+    "name": "spr_truck",
+    "path": "sprites/spr_truck/spr_truck.yy",
   },
   "solid": true,
   "visible": true,
@@ -20,15 +20,17 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Props",
+    "path": "folders/Objects/Props.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_obstacle",
+  "name": "obj_truck",
   "tags": [],
   "resourceType": "GMObject",
 }
