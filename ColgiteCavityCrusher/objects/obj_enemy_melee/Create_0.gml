@@ -4,8 +4,8 @@
 event_inherited();
 
 //change stats
-EnemyStats.attackSpeed = 40000;
-EnemyStats.attack_dev = 2000;
+EnemyStats.attackSpeed = 400000;
+EnemyStats.attack_dev = 10000;
 EnemyStats.distToAttack = 400;
 
 // create ranged enemy states

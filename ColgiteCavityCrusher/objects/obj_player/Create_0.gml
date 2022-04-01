@@ -87,11 +87,11 @@ function attack(start_time){
 function death(_end){
 	_death = true;
 	if(!_end){
-		instance_deactivate_all(true);
+		//instance_deactivate_all(true);
 	}
 	else{
-		
-		instance_create_layer(0,0,"Instances", obj_gameover);
+		obj_gameover.game_over();
+		//instance_create_layer(0,0,"Instances", obj_gameover);
 	}
 	
 }

@@ -16,10 +16,15 @@ function PlayAnimationOnceState(_id = "ProjectileAttack", _sprite = undefined, _
 	}
 	
 	static handle_input = function(_sm, _input="")
-	{
+	{		
 		if(_input == "anim_end")
 		{
-			_sm.set_state(next_id);
+			var bValid = (_sm.get_owner().sprite_index == sprite);
+			if(bValid)
+			{
+				show_debug_message(_sm.get_owner().image_index);
+				_sm.set_state(next_id);	
+			}
 		}
 	}
 }

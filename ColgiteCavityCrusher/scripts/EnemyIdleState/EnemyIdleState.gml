@@ -14,7 +14,7 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 		{
 			_sm.get_owner().sprite_index = sprite;	
 		}
-		var stats = _sm.get_owner().EnemyStats;		
+		var stats = _sm.get_owner().EnemyStats;
 		timer = stats.attackSpeed + random_range(-stats.attackSpeedDev, stats.attackSpeedDev);
 	}
 	

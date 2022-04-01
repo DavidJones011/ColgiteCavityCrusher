@@ -28,6 +28,7 @@ function move_to_random()
 	var destination = FindRandomSpotInCamera(view_camera[0], 1800, 300);
 	if(is_array(destination))
 	{
+		cancel_move();
 		EnemyStats.targetPos = destination;
 		EnemyStats.curSpeed = random_range(EnemyStats.minSpeed, EnemyStats.maxSpeed);
 		EnemyStats.isMoving = true;
@@ -37,10 +38,10 @@ function move_to_random()
 
 function move_next_to_target()
 {
-	var destination = FindSpotNextToTarget(self, EnemyStats.targetObj, EnemyStats.distToAttack);
-	
+	var destination = FindSpotNextToTarget(self, EnemyStats.targetObj, EnemyStats.distToAttack);	
 	if(is_array(destination))
 	{
+		cancel_move();
 		EnemyStats.targetPos = destination;
 		EnemyStats.curSpeed = random_range(EnemyStats.minSpeed, EnemyStats.maxSpeed);
 		EnemyStats.isMoving = true;
@@ -81,7 +82,10 @@ function update_move()
 function take_damage(_damage = 10)
 {	
 	if(self.EnemyStats.hp == 0)
+	{
+		self.enemy_sm.set_state("Death");
 		return;
+	}
 	
 	cancel_move();
 	self.EnemyStats.hp -= _damage;

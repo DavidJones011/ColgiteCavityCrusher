@@ -73,6 +73,12 @@ function StateMachine (_owner = undefined) constructor
 	// TODO: allow for queued inputs?
 	static send_input = function(_input="")
 	{
+		if(is_undefined(current_state))
+			return;
+			
+		if(status != SM_Status.STEPING)
+			return;
+			
 		pending_input = _input;
 	}
 	
@@ -89,7 +95,7 @@ function StateMachine (_owner = undefined) constructor
 		{
 			//show_debug_message("StateMachine::set_state(), already pending state, ignored.");
 			return;
-		}	
+		}
 		
 		if(is_undefined(_id))
 		{

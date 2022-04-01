@@ -24,7 +24,7 @@ function EnemyMoveToTargetState(_id = "MoveTo", _sprite = undefined) : State(_id
 	}
 	
 	static step_state = function(_sm)
-	{	
+	{
 	}
 	
 	static exit_state = function(_sm)
