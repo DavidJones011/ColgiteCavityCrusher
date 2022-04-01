@@ -4,7 +4,8 @@
 event_inherited();
 
 //change stats
-EnemyStats.attackSpeed = 2500;
+EnemyStats.attackSpeed = 600000;
+EnemyStats.attack_dev = 5000;
 
 // create ranged enemy states
 idle_state = new EnemyIdleState("Idle", spr_rangedenemy_idle);

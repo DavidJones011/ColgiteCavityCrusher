@@ -111,20 +111,15 @@ function spawn_projectile(_projectile)
 	with(instance_create_layer( posX, posY, "Projectiles", _projectile))
 	{
 		var targetY = other.EnemyStats.targetObj.y - sprite_height/2;
-		depth = CalcDepthFromY();
-		speed = 70;
+		set_speed(70);
 		var dirX = other.EnemyStats.targetObj.x - posX;
 		var dirY = targetY - posY;
 		var offset = 0.0;
-
 		if(dirX == 0.0)
 			dirX =  1.0;
 		else if(dirX < 0.0)
-			offset = 180;
-			
+			offset = 180;		
 		direction = radtodeg(arctan(-dirY/dirX)) + offset;
-			
-		//show_debug_message(string(direction));
 	}	
 }
 

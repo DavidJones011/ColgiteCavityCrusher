@@ -13,12 +13,16 @@ function remove_enemy(_enemy)
 	
 	if(current_spawns <= 0)
 	{
-		cont_camera.set_target(obj_player);	
+		cont_camera.set_target(obj_player);
+		audio_stop_sound(snd_combatmusic);
+		audio_play_sound(snd_calmmusic, 1000, true);
 	}
 }
 
 function spawn_enemies()
 {
+	audio_stop_sound(snd_calmmusic);
+	audio_play_sound(snd_combatmusic, 1000, true);
 	disabled = true;
 	for(var i = 0; i < melee_enemies; i++)
 	{

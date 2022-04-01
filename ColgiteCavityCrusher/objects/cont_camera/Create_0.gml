@@ -15,11 +15,11 @@ desiredZoomFactor = 1;
 // resize surface and window
 var dWidth = display_get_width();
 var dHeight = display_get_height();
-var dPosX = (dWidth/2) - 480;
-var dPosY = (dHeight/2) -270;
+var dPosX = (dWidth/2) - 640;
+var dPosY = (dHeight/2) - 360;
 
-window_set_rectangle(dPosX, dPosY, 960, 540);
-surface_resize(application_surface, 960, 540);
+window_set_rectangle(dPosX, dPosY, 1280, 720);
+surface_resize(application_surface, 1280, 720);
 
 // variables used for effects
 offsetX = 0;

@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_rangedenemy_idle",
-    "path": "sprites/spr_rangedenemy_idle/spr_rangedenemy_idle.yy",
+    "name": "spr_meleeenemy_idle",
+    "path": "sprites/spr_meleeenemy_idle/spr_meleeenemy_idle.yy",
   },
   "solid": false,
   "visible": true,

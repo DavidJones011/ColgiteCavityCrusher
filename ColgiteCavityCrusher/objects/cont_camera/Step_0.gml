@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 // update the camera position when a target is set
-if(target != noone)
+if(target != noone && instance_exists(target))
 {
 	var desiredX = target.x - camera_get_view_width(view_camera[0]) * 0.5;
 	desiredX = clamp(desiredX, 0, room_width - camera_get_view_width(view_camera[0]));	

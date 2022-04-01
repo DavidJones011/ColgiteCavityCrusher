@@ -5,9 +5,7 @@
 function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) constructor
 {
 	sprite = _sprite;
-	start_time = 0;
-	attack_dev = 0;
-	update_time = 0;
+	timer = 0.0;
 	
 	static enter_state = function(_sm)
 	{
@@ -17,9 +15,7 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 			_sm.get_owner().sprite_index = sprite;	
 		}
 		var stats = _sm.get_owner().EnemyStats;		
-		start_time = current_time;
-		update_time = start_time;
-		attack_dev = random_range(-stats.attackSpeedDev, stats.attackSpeedDev);
+		timer = stats.attackSpeed + random_range(-stats.attackSpeedDev, stats.attackSpeedDev);
 	}
 	
 	static step_state = function(_sm)
@@ -30,9 +26,10 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 		
 		_sm.get_owner().image_xscale = -sign(stats.targetObj.x - _sm.get_owner().x);
 			
-		if((current_time - update_time) > 500)
+		timer -= _sm.get_owner().delta_time;			
+		if(timer <= 0.0)
 		{
-			update_time = current_time;
+			timer = stats.attackSpeed + random_range(-stats.attackSpeedDev, stats.attackSpeedDev);
 			if(attack_val > 0.4)
 			{
 				if(rand > -1 && rand < 2)
