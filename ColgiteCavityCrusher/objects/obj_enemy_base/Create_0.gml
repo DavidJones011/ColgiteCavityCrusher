@@ -135,10 +135,10 @@ function spawn_projectile(_projectile)
 
 function spawn_pickup()
 {
-	var randSpawn = irand_range(0,3);
+	var randSpawn = irandom_range(0,3);
 	if(randSpawn == 1)
 	{
-		var randType = irand_range(0,1);
+		var randType = irandom_range(0,1);
 		if(randType == 0)
 		{
 			instance_create_depth(x,y,depth,obj_pickup_health);
