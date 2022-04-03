@@ -6,6 +6,15 @@
 if(!global.paused)
 	return;
 
+timer -= delta_time;
+if(timer <= 0.0)
+{
+	timer = 500000;
+	index++;
+	if(index >= sprite_get_number(spr_sleep))
+		index = 0;
+}
+
 var hoveringOverOption = false;
 var selectIndex = -1;
 
@@ -16,9 +25,10 @@ centerY = window_get_height()/2;
 
 // draw game over menu
 draw_sprite_ext(spr_black_trans, 0, 0, 0, sizeX, sizeY, 0, -1, 1);
-draw_sprite(spr_game_title, 0, centerX, centerY - 200);
-//draw_sprite(spr_tooth, 0, centerX, centerY + 100);
-draw_sprite(spr_start, 0, centerX, centerY);
+draw_sprite(spr_pause_title, 0, centerX, centerY - 200);
+draw_sprite(spr_sleeptooth, 0, centerX + 200, centerY + 100);
+draw_sprite(spr_sleep, index, centerX + 250, centerY + 100);
+draw_sprite(spr_resume, 0, centerX, centerY);
 draw_sprite(spr_options, 0, centerX, centerY + 100);
 draw_sprite(spr_quit, 0, centerX, centerY + 200);
 
@@ -32,7 +42,7 @@ var tryExtentX = 92;//sprite_get_width(spr_tryagain) / 2;
 var tryExtentY = 33;//sprite_get_height(spr_tryagain) / 2;
 if(point_in_rectangle(mouseX, mouseY, centerX-tryExtentX, centerY-tryExtentY, centerX+tryExtentX, centerY+tryExtentY))
 {
-	draw_sprite_ext(spr_start, 0, centerX, centerY, 1, 1, 0, c_yellow, 1.0);
+	draw_sprite_ext(spr_resume, 0, centerX, centerY, 1, 1, 0, c_yellow, 1.0);
 	hoveringOverOption = true;
 	selectIndex = 0;
 }

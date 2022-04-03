@@ -1,10 +1,10 @@
 {
   "spriteId": {
-    "name": "spr_cat_example2",
-    "path": "sprites/spr_cat_example2/spr_cat_example2.yy",
+    "name": "spr_cat_example1",
+    "path": "sprites/spr_cat_example1/spr_cat_example1.yy",
   },
   "solid": false,
-  "visible": true,
+  "visible": false,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,

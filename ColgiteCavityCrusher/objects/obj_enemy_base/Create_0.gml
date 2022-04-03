@@ -82,13 +82,13 @@ function update_move()
  */
 function take_damage(_damage = 10)
 {	
+	cancel_move();
 	if(self.EnemyStats.hp == 0)
 	{
 		self.enemy_sm.set_state("Death");
 		return;
 	}
 	
-	cancel_move();
 	self.EnemyStats.hp -= _damage;
 	self.EnemyStats.hp = clamp(self.EnemyStats.hp, 0, self.EnemyStats.maxHealth);
 	
@@ -110,7 +110,8 @@ function take_damage(_damage = 10)
 /* spawn a projectile
  */
 function spawn_projectile(_projectile)
-{	
+{
+	cancel_move();
 	if(is_undefined(_projectile))
 		return;
 		
@@ -145,7 +146,8 @@ function hit(_attackDist, _height, _offsetx, _offsety, _damage)
 {
 	if(is_undefined(EnemyStats.targetObj))
 		return;
-			
+
+	cancel_move();
 	x2 = x + (_offsetx - sprite_get_width(sprite_index) * 0.5) * image_xscale;
 	x1 = x2 - (_attackDist * image_xscale);
 	y1 = y + _offsety - (sprite_get_height(sprite_index) - _height) * 0.5;

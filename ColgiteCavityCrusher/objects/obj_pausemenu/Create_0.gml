@@ -3,6 +3,8 @@
 
 global.paused = false;
 prevIndex = -1;
+timer = 500000;
+index = 0;
 
 function togglePause()
 {
