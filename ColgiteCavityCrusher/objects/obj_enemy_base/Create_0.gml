@@ -94,6 +94,7 @@ function take_damage(_damage = 10)
 	
 	if(self.EnemyStats.hp == 0)
 	{
+		spawn_pickup();
 		audio_play_sound(snd_critcal_hit, 5, false);
 		audio_play_sound(EnemyStats.hurtSound, 5, false);
 		self.enemy_sm.set_state("Death");
@@ -130,6 +131,23 @@ function spawn_projectile(_projectile)
 			offset = 180;		
 		direction = radtodeg(arctan(-dirY/dirX)) + offset;
 	}	
+}
+
+function spawn_pickup()
+{
+	var randSpawn = irand_range(0,3);
+	if(randSpawn == 1)
+	{
+		var randType = irand_range(0,1);
+		if(randType == 0)
+		{
+			instance_create_depth(x,y,depth,obj_pickup_health);
+		}
+		else
+		{
+			instance_create_depth(x,y,depth,obj_pickup_power);
+		}
+	}
 }
 
 /* sets the spawner for this enemy object
