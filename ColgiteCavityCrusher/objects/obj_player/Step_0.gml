@@ -2,8 +2,8 @@
 // You can write your code in this editor
 if(!global.paused){
 depth = CalcDepthFromY();
-if(_input){
-	
+if(_input && !special_bool){
+if(!_block){	
 	_key = "";
 	if(keyboard_check(ord("A"))){
 		_key = "A"
@@ -52,14 +52,18 @@ if(_input){
 		player_sm.send_input("attack");
 	}
 	if(keyboard_check(vk_shift) && powerup > 0){
+		instance_create_layer(x+450*(image_xscale), y-400, "Instances", obj_beam);
+		obj_beam.image_xscale = image_xscale;
 		player_sm.send_input("special");	
 		powerup--;
 		special_bool = true;
 	}
+	
 	if(keyboard_check(ord("E")) && !_block){
 		player_sm.send_input("block");
 		_block = true;
 	}
+}
 	if(keyboard_check_released(ord("E")) && _block){
 		_block = false;
 		wasBlock = false;

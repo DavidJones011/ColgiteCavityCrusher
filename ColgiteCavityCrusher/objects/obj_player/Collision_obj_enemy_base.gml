@@ -13,10 +13,8 @@ with(other){
 		
 		if(self.EnemyStats.hp <= 0 && !gotPoint)
 		{
-			obj_player.points += 100;
-			if(obj_player.points %400 == 0){
-				obj_player.powerup++;	
-			}
+			obj_player.point(50);
+			
 			gotPoint = true;
 		}
 	}

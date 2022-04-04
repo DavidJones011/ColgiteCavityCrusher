@@ -12,6 +12,7 @@ var _inst = layer_instance_get_instance(event_data[? "element_id"]);
 		case "Player_Special_End":
 			special_bool = false;
 			break;
+	
 		default:
 			break;
 	}

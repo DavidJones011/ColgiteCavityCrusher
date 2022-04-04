@@ -467,7 +467,7 @@
     "volume": 1.0,
     "length": 144.0,
     "events": {"Keyframes":[
-        {"id":"21743267-6b36-4b9a-949b-04b899931679","Key":143.9999,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Events":[
+        {"id":"f0acd119-3bc4-4698-bf3d-b5d2117daa7b","Key":143.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Events":[
                 "Player_Special_End",
               ],"resourceVersion":"1.0","resourceType":"MessageEventKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<MessageEventKeyframe>",},
       ],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},

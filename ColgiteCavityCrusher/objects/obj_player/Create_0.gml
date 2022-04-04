@@ -12,11 +12,12 @@ _input = true;
 counts = true;
 _stopAttackTimer = 0;
 _attackTimer = 0;
-powerup = 0;
+powerup = 1;
 _block = false;
 special_bool = false;
 wasBlock = false;
 blockEnd = false;
+powerupTotal = 0;
 //animEnd = false;
 
 idle_state = new PlayerIdleState("Idle", spr_player_idle);
@@ -48,6 +49,7 @@ player_sm.set_default_state("Idle");
 function take_damage(_damage, _x){
 	if((!_block || (image_xscale < 0 && _x < x) || (image_xscale > 0 && _x > x)) && !special_bool){
 		PlayerStats.hp -= _damage;
+		point(-20);
 		if(PlayerStats.hp <=0){
 			player_sm.set_state("Death");
 		
@@ -119,4 +121,12 @@ function death(_end){
 
 function block(){
 	return blockEnd;	
+}
+
+function point(_pointChange){
+	points += _pointChange;	
+	if(points > 400*(powerupTotal + 1)){
+		powerupTotal++;
+		powerup++;	
+	}
 }
