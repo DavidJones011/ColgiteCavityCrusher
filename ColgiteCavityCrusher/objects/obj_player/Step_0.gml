@@ -51,15 +51,16 @@ if(!_block){
 		_stopAttackTimer = 0;
 		player_sm.send_input("attack");
 	}
-	if(keyboard_check(vk_shift) && powerup > 0){
+	else if(keyboard_check(vk_shift) && powerup > 0){
 		instance_create_layer(x+450*(image_xscale), y-400, "Instances", obj_beam);
 		obj_beam.image_xscale = image_xscale;
-		player_sm.send_input("special");	
+		player_sm.set_state("Special");
+		player_sm.step_sm();
 		powerup--;
 		special_bool = true;
 	}
 	
-	if(keyboard_check(ord("E")) && !_block){
+	else if(keyboard_check(ord("E")) && !_block){
 		player_sm.send_input("block");
 		_block = true;
 	}

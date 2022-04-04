@@ -68,6 +68,7 @@ function take_damage(_damage, _x){
 }
 
 function move(_x, _y){
+	
 	if(_x == 0 && _y ==0){
 		return false;
 	}
@@ -97,7 +98,7 @@ function attack(start_time){
 	_attack = true;
 	_attackTimer++;
 
-	if(!keyboard_check_pressed(vk_space) && _stopAttackTimer > 20)  {
+	if( _stopAttackTimer > 20)  {
 		_attack = false;
 		_input = false;
 		counts = true; 

@@ -24,7 +24,7 @@ function PlayerMoveState(_id = "Move", _sprite = undefined, _speed = 2) : State(
 		// grab the enemy stats
 		//var stats = _sm.get_owner().PlayerStats;
 		var owner = _sm.get_owner();
-		if(!owner.move(_x, _y)){
+		if(!owner.move(_x, _y) && !owner._block && !owner.special_bool){
 			_sm.set_state("Idle");
 		}
 		_x = 0;
