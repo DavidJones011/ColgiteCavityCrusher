@@ -48,16 +48,18 @@ player_sm.set_default_state("Idle");
 
 function take_damage(_damage, _x){
 	if(!special_bool){
-		if((!_block || (image_xscale < 0 && _x < x) || (image_xscale > 0 && _x > x))){
+		if((!_block || (image_xscale > 0 && _x < x) || (image_xscale < 0 && _x > x))){
 			image_speed = 1;
 			PlayerStats.hp -= _damage;
 			point(-20);
 			if(PlayerStats.hp <=0){
+				audio_play_sound(snd_player_death, 10, false);
 				player_sm.set_state("Death");
 		
 			}
 			else{
 				player_sm.set_state("Hurt");
+				audio_play_sound(snd_hurt_01, 10, false);
 				_input = false;
 			}
 		}
@@ -103,6 +105,7 @@ function attack(start_time){
 	_attackTimer++;
 
 	if( _stopAttackTimer > 20)  {
+		audio_play_sound(snd_woosh_01, 10, false);
 		_attack = false;
 		_input = false;
 		counts = true; 

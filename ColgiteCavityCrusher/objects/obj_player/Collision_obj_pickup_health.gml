@@ -4,5 +4,6 @@ if(PlayerStats.hp < 100){
 	PlayerStats.hp += 10;
 }
 with(other){
-		instance_destroy();
+	audio_play_sound(snd_pickup, 10, false);
+	instance_destroy();
 }

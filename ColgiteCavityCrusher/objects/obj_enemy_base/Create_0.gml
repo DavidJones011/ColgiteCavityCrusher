@@ -141,11 +141,11 @@ function spawn_pickup()
 		var randType = irandom_range(0,1);
 		if(randType == 0)
 		{
-			instance_create_depth(x,y+300,depth,obj_pickup_health);
+			instance_create_depth(x,y-300,depth,obj_pickup_health);
 		}
 		else
 		{
-			instance_create_depth(x,y+300,depth,obj_pickup_power);
+			instance_create_depth(x,y-300,depth,obj_pickup_power);
 		}
 	}
 }
@@ -171,7 +171,8 @@ function hit(_attackDist, _height, _offsetx, _offsety, _damage)
 	y1 = y + _offsety - (sprite_get_height(sprite_index) - _height) * 0.5;
 	y2 = y1 + _height;
 
-	var obj = collision_rectangle(x1, y1, x2, y2, EnemyStats.targetObj, 0, 0);
+	var obj = noone;
+	obj = collision_rectangle(x1, y1, x2, y2, EnemyStats.targetObj, 0, 0);
 	if(obj != noone)
 	{
 		with(obj)

@@ -42,7 +42,7 @@ function PlayerMoveState(_id = "Move", _sprite = undefined, _speed = 2) : State(
 	static exit_state = function(_sm)
 	{
 		// reset the goal target for the next call
-		_sm.set_state("Idle");
+		//_sm.set_state("Idle");
 	}
 	
 	static handle_input = function(_sm, _input){
@@ -98,6 +98,9 @@ function PlayerMoveState(_id = "Move", _sprite = undefined, _speed = 2) : State(
 		
 		else if(_input == "attack"){
 			_sm.set_state("Attack");
+		}
+		else if(_input == "block"){
+			_sm.set_state("Block");
 		}
 		else if(_input == "anim_end"){
 			_x = lastX;

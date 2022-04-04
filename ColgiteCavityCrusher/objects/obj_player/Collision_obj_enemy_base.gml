@@ -5,11 +5,11 @@ with(other){
 	if(self.EnemyStats.hp > 0){
 			gotPoint = false;
 	}
-	show_debug_message(self.EnemyStats.hp);
+	//show_debug_message(self.EnemyStats.hp);
 	if(obj_player._attack && obj_player.counts){
 		obj_player.counts = false;
 		
-		take_damage(30);
+		self.take_damage(30);
 		
 		if(self.EnemyStats.hp <= 0 && !gotPoint)
 		{

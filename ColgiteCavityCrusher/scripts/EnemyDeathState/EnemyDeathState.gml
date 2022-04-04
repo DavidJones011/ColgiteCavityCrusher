@@ -33,7 +33,6 @@ function EnemyDeathState(_id = "ProjectileAttack", _sprite = undefined) : State(
 		{
 			_sm.get_owner().image_speed = 0;
 			_sm.get_owner().image_index = _sm.get_owner().sprite_get_number(sprite)-1;
-			timeStart = current_time;
 		}
 	}
 }

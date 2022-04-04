@@ -50,6 +50,7 @@
     {"id":{"name":"PlayerMoveState","path":"scripts/PlayerMoveState/PlayerMoveState.yy",},"order":2,},
     {"id":{"name":"spr_distant_buildings","path":"sprites/spr_distant_buildings/spr_distant_buildings.yy",},"order":5,},
     {"id":{"name":"obj_mainmenu","path":"objects/obj_mainmenu/obj_mainmenu.yy",},"order":1,},
+    {"id":{"name":"snd_pickup","path":"sounds/snd_pickup/snd_pickup.yy",},"order":13,},
     {"id":{"name":"EnemyMoveToRandomState","path":"scripts/EnemyMoveToRandomState/EnemyMoveToRandomState.yy",},"order":2,},
     {"id":{"name":"PlayerAttackState","path":"scripts/PlayerAttackState/PlayerAttackState.yy",},"order":1,},
     {"id":{"name":"obj_enemy_base","path":"objects/obj_enemy_base/obj_enemy_base.yy",},"order":0,},
@@ -182,7 +183,7 @@
   ],
   "IncludedFiles": [],
   "MetaData": {
-    "IDEVersion": "2022.1.0.609",
+    "IDEVersion": "2022.1.1.610",
   },
   "resourceVersion": "1.4",
   "name": "ColgiteCavityCrusher",

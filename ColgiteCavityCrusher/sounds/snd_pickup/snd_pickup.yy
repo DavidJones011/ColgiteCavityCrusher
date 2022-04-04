@@ -1,7 +1,7 @@
 {
   "conversionMode": 0,
   "compression": 0,
-  "volume": 1.0,
+  "volume": 0.93,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -11,14 +11,14 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snd_hurt_01.wav",
-  "duration": 0.386333,
+  "soundFile": "snd_pickup.wav",
+  "duration": 0.673379,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",
   },
   "resourceVersion": "1.0",
-  "name": "snd_hurt_01",
+  "name": "snd_pickup",
   "tags": [],
   "resourceType": "GMSound",
 }

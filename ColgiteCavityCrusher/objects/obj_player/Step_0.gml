@@ -73,7 +73,7 @@ if(!_block){
 		player_sm.send_input("stopBlock");
 		image_speed = 1;
 	}
-	show_debug_message(image_speed);
+	//show_debug_message(image_speed);
 }
 //else if(image_index > image_number -1){
 //	sprite_index = spr_player_recovery;

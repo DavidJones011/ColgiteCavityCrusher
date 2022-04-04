@@ -22,7 +22,7 @@ function PlayAnimationOnceState(_id = "ProjectileAttack", _sprite = undefined, _
 			var bValid = (_sm.get_owner().sprite_index == sprite);
 			if(bValid)
 			{
-				show_debug_message(_sm.get_owner().image_index);
+				//show_debug_message(_sm.get_owner().image_index);
 				_sm.set_state(next_id);	
 			}
 		}
