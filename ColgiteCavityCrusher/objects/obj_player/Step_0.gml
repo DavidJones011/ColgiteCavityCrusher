@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+if(!global.paused){
 depth = CalcDepthFromY();
 
 if(_input){
@@ -59,3 +60,4 @@ if(_input){
 //}
 
 player_sm.step_sm();
+}
