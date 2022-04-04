@@ -19,11 +19,17 @@ function StateMachine (_owner = undefined) constructor
 	current_state = undefined;
 	owning_object = _owner;
 	states = ds_map_create();
+	debug = false;
 	
 	// get owning object of the state machine
 	static get_owner = function()
 	{
 		return owning_object;
+	}
+	
+	static set_debug = function (_debug = false)
+	{
+		debug = _debug;
 	}
 	
 	// adds a state to the state machine
@@ -115,12 +121,14 @@ function StateMachine (_owner = undefined) constructor
 			return;
 		}
 		
+		if(debug)
+			show_debug_message(_id);
 		pending_state_id = _id;	
 	}
 	
 	// steps the state machine (steps the current state)
 	static step_sm = function()
-	{
+	{			
 		switch(status)
 		{
 			case SM_Status.ENTERING:

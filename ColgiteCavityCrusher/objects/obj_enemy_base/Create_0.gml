@@ -141,11 +141,11 @@ function spawn_pickup()
 		var randType = irandom_range(0,1);
 		if(randType == 0)
 		{
-			instance_create_depth(x,y,depth,obj_pickup_health);
+			instance_create_depth(x,y+300,depth,obj_pickup_health);
 		}
 		else
 		{
-			instance_create_depth(x,y,depth,obj_pickup_power);
+			instance_create_depth(x,y+300,depth,obj_pickup_power);
 		}
 	}
 }
@@ -176,7 +176,7 @@ function hit(_attackDist, _height, _offsetx, _offsety, _damage)
 	{
 		with(obj)
 		{
-			take_damage(10);
+			self.take_damage(10, x);
 		}
 	}
 }
