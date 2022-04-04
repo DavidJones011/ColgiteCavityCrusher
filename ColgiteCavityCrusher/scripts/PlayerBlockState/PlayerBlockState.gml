@@ -22,6 +22,7 @@ function PlayerBlockState(_id = "Block", _sprite = undefined, _speed = 2) : Stat
 			_sm.get_owner().image_speed = 0;	
 			_sm.get_owner().image_index = 6;
 		}
+		_sm.get_owner()._input = true;
 	}
 	
 	static step_state = function(_sm)

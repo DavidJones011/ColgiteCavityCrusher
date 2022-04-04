@@ -12,7 +12,7 @@ _input = true;
 counts = true;
 _stopAttackTimer = 0;
 _attackTimer = 0;
-powerup = 1;
+powerup = 0;
 _block = false;
 special_bool = false;
 wasBlock = false;
@@ -47,23 +47,27 @@ player_sm.set_default_state("Idle");
 
 
 function take_damage(_damage, _x){
-	if((!_block || (image_xscale < 0 && _x < x) || (image_xscale > 0 && _x > x)) && !special_bool){
-		PlayerStats.hp -= _damage;
-		point(-20);
-		if(PlayerStats.hp <=0){
-			player_sm.set_state("Death");
+	if(!special_bool){
+		if((!_block || (image_xscale < 0 && _x < x) || (image_xscale > 0 && _x > x))){
+			image_speed = 1;
+			PlayerStats.hp -= _damage;
+			point(-20);
+			if(PlayerStats.hp <=0){
+				player_sm.set_state("Death");
 		
+			}
+			else{
+				player_sm.set_state("Hurt");
+				_input = false;
+			}
 		}
 		else{
-			player_sm.set_state("Hurt");
-			_input = false;
+			player_sm.set_state("BlockHit");
+			image_speed = 1;
+			blockEnd = false;
+			blockEnd = false;
+			wasBlock = true;
 		}
-	}
-	else{
-		player_sm.set_state("BlockHit");
-		image_speed = 1;
-		blockEnd = false;
-		wasBlock = true;
 	}
 }
 

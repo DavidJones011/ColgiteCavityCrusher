@@ -5,10 +5,10 @@ if(!_death){
 	show_debug_message(PlayerStats.hp);
 }
 if(powerup > 0){
-	draw_sprite(spr_power_up, 0, 50, 150);
+	draw_sprite(spr_power_up, 0, 100, 150);
 }
 else{
-	draw_sprite(spr_empty_powerup, 0, 50, 150);
+	draw_sprite(spr_empty_powerup, 0, 100, 150);
 }
 
 draw_text(800, 15, "Point Total: " +  string(points));

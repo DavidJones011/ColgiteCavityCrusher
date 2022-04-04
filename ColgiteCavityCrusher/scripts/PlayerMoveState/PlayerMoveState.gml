@@ -8,6 +8,8 @@ function PlayerMoveState(_id = "Move", _sprite = undefined, _speed = 2) : State(
 	speed = _speed;
 	_x = 0;
 	_y = 0;
+	lastX = 0;
+	lastY = 0;
 	
 	
 	static enter_state = function(_sm)
@@ -47,40 +49,60 @@ function PlayerMoveState(_id = "Move", _sprite = undefined, _speed = 2) : State(
 		var owner = _sm.get_owner();
 		if(_input == "W"){
 			//owner.move(0, -1);
+			lastY = -1;
+			lastX = 0;
 			_y = -1;
 		}
 		else if(_input == "S"){
 			_y = 1;
+			lastY = -1;
+			lastX = 0;
 			//owner.move(0, 1);
 		}
 		else if(_input == "D"){
 			_x = 1;
+			lastX = 1;
+			lastY = 0;
 			//owner.move(1, 0);
 		}
 		else if(_input == "A"){
 			_x = -1;
+			lastX = -1;
+			lastY = 0;
 			//owner.move(-1, 0);
 		}
 		else if(_input == "AW"){
 			_x = -1;
 			_y = -1;
+			lastY = -1;
+			lastX = -1;
 		}
 		else if(_input == "AS"){
 			_x = -1;
 			_y = 1;
+			lastY = 1;
+			lastX = -1;
 		}
 		else if(_input == "DW"){
 			_x = 1;
 			_y = -1;
+			lastY = -1;
+			lastX = 1;
 		}
 		else if(_input == "DS"){
 			_x = 1;
 			_y = 1;
+			lastY = 1;
+			lastX = 1;
 		}
 		
-		if(_input == "attack"){
+		else if(_input == "attack"){
 			_sm.set_state("Attack");
 		}
+		else if(_input == "anim_end"){
+			_x = lastX;
+			_y = lastY;
+	}
 		
 		
 		
