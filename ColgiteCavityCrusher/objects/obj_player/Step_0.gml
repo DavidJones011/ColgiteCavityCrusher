@@ -2,7 +2,6 @@
 // You can write your code in this editor
 if(!global.paused){
 depth = CalcDepthFromY();
-
 if(_input){
 	
 	_key = "";
@@ -52,7 +51,23 @@ if(_input){
 		_stopAttackTimer = 0;
 		player_sm.send_input("attack");
 	}
-	
+	if(keyboard_check(vk_shift) && powerup > 0){
+		player_sm.send_input("special");	
+		powerup--;
+		special_bool = true;
+	}
+	if(keyboard_check(ord("E")) && !_block){
+		player_sm.send_input("block");
+		_block = true;
+	}
+	if(keyboard_check_released(ord("E")) && _block){
+		_block = false;
+		wasBlock = false;
+		blockEnd = false;
+		player_sm.send_input("stopBlock");
+		image_speed = 1;
+	}
+	show_debug_message(image_speed);
 }
 //else if(image_index > image_number -1){
 //	sprite_index = spr_player_recovery;

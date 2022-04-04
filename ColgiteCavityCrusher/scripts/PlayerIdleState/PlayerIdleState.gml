@@ -52,6 +52,12 @@ function PlayerIdleState(_id = "Idle", _sprite = undefined) : State(_id) constru
 		if(_input == "attack"){
 			_sm.set_state("Attack");	
 		}
+		else if(_input == "block"){
+			_sm.set_state("Block");
+		}
+		else if(_input == "special"){
+			_sm.set_state("Special");
+		}
 		else if(_input != "anim_end"){
 			_sm.set_state("Move");
 		}	

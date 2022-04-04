@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_pickup_health",
+    "path": "sprites/spr_pickup_health/spr_pickup_health.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

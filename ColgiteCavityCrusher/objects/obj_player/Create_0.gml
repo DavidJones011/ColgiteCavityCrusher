@@ -12,6 +12,11 @@ _input = true;
 counts = true;
 _stopAttackTimer = 0;
 _attackTimer = 0;
+powerup = 0;
+_block = false;
+special_bool = false;
+wasBlock = false;
+blockEnd = false;
 //animEnd = false;
 
 idle_state = new PlayerIdleState("Idle", spr_player_idle);
@@ -20,6 +25,10 @@ attack_state = new PlayerAttackState("Attack", spr_player_attack);
 hurt_state = new PlayAnimationOnceState("Hurt", spr_player_hit, "Idle");
 recovery_state = new PlayAnimationOnceState("Recover", spr_player_recovery, "Idle");
 death_state = new PlayerDeathState("Death", spr_player_death);
+block_state = new PlayerBlockState("Block", spr_player_block_start);
+block_recovery_state = new PlayAnimationOnceState("BlockRecovery", spr_player_block_recovery, "Idle");
+block_hit_state = new PlayAnimationOnceState("BlockHit", spr_player_block_hit, "Block");
+special_state = new PlayAnimationOnceState("Special", spr_player_special, "Idle");
 
 // setup state machine
 player_sm = new StateMachine(self);
@@ -29,17 +38,30 @@ player_sm.add_state(chase_state);
 player_sm.add_state(attack_state);
 player_sm.add_state(death_state);
 player_sm.add_state(recovery_state);
+player_sm.add_state(block_state);
+player_sm.add_state(block_recovery_state);
+player_sm.add_state(special_state);
+player_sm.add_state(block_hit_state);
 player_sm.set_default_state("Idle");
 
-function take_damage(_damage){
-	PlayerStats.hp -= _damage;
-	if(PlayerStats.hp <=0){
-		player_sm.set_state("Death");
+
+function take_damage(_damage, _x){
+	if((!_block || (image_xscale < 0 && _x < x) || (image_xscale > 0 && _x > x)) && !special_bool){
+		PlayerStats.hp -= _damage;
+		if(PlayerStats.hp <=0){
+			player_sm.set_state("Death");
 		
+		}
+		else{
+			player_sm.set_state("Hurt");
+			_input = false;
+		}
 	}
 	else{
-		player_sm.set_state("Hurt");
-		_input = false;
+		player_sm.set_state("BlockHit");
+		image_speed = 1;
+		blockEnd = false;
+		wasBlock = true;
 	}
 }
 
@@ -72,8 +94,7 @@ function move(_x, _y){
 function attack(start_time){
 	_attack = true;
 	_attackTimer++;
-	attackBool = (_attackTimer-10)%11==0;
-	attackBool = (_attackTimer -37)%12 == 0;
+
 	if(!keyboard_check_pressed(vk_space) && _stopAttackTimer > 20)  {
 		_attack = false;
 		_input = false;
@@ -94,4 +115,8 @@ function death(_end){
 		//instance_create_layer(0,0,"Instances", obj_gameover);
 	}
 	
+}
+
+function block(){
+	return blockEnd;	
 }

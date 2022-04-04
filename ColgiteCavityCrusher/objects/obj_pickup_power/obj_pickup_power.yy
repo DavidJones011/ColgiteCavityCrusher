@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_pickup_powerup",
+    "path": "sprites/spr_pickup_powerup/spr_pickup_powerup.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
