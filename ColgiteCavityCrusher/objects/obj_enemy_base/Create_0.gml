@@ -71,8 +71,11 @@ function update_move()
 	}
 	else
 	{
-		enemy_sm.send_input("goal_reached");
-		EnemyStats.isMoving = false;
+		if(!is_undefined(enemy_sm))
+		{
+			enemy_sm.send_input("goal_reached");
+			EnemyStats.isMoving = false;	
+		}
 	}
 }
 
