@@ -32,7 +32,7 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 			timer = stats.attackSpeed + random_range(-stats.attackSpeedDev, stats.attackSpeedDev);
 			if(attack_val > 0.4)
 			{
-				if(rand > -1 && rand < 2)
+				if(rand > -1 && rand < 4)
 				{
 					_sm.set_state("MoveToRand");	
 				}
@@ -43,11 +43,15 @@ function EnemyIdleState(_id = "Idle", _sprite = undefined) : State(_id) construc
 			}
 			else
 			{
-				if(rand > -1 && rand < 5)
+				if(rand > -1 && rand < 4)
 				{
 					_sm.set_state("MoveToRand");
 				}
-				else if(rand > 4 && rand <  11)
+				else if(rand > 3 && rand < 6)
+				{
+					_sm.set_state("MoveAroundTarget");
+				}
+				else
 				{
 					_sm.set_state("MoveToTarget");
 				}

@@ -50,6 +50,19 @@ function move_next_to_target()
 	return EnemyStats.isMoving;
 }
 
+function move_to_circle_at_target()
+{
+	var destination = GetPointAroundTarget(EnemyStats.targetObj, 1800, 700, 1000);
+	if(is_array(destination))
+	{
+		cancel_move();
+		EnemyStats.targetPos = destination;
+		EnemyStats.curSpeed = EnemyStats.maxSpeed;
+		EnemyStats.isMoving = true;
+	}
+	return EnemyStats.isMoving;	
+}
+
 function cancel_move()
 {
 	EnemyStats.targetPos = undefined;
@@ -60,6 +73,27 @@ function update_move()
 {
 	if(is_undefined(EnemyStats.targetPos))
 		return;
+	
+	var mod_x = 0;
+	var mod_y = 0;
+	for(var i = 0; i < instance_number(obj_enemy_base); ++i)
+	{
+		var otherEnemy = instance_find(obj_enemy_base, i);
+		if(otherEnemy != self)
+		{
+			var dist = distance_to_object(otherEnemy);
+			if(dist < 15)
+			{
+				mod_x += x - otherEnemy.x;
+				mod_y += y - otherEnemy.y;
+			}	
+		}
+	}
+	
+	var dist = sqrt((mod_x * mod_x) + (mod_y * mod_y));
+	mod_x = x + (mod_x / dist) * 200;
+	mod_y = y + (mod_y / dist) * 200;
+	mp_potential_step(mod_x, mod_y, EnemyStats.curSpeed, all);
 		
 	if (distance_to_point(EnemyStats.targetPos[0], EnemyStats.targetPos[1]) > 50)
 	{
@@ -94,6 +128,9 @@ function take_damage(_damage = 10)
 	
 	self.EnemyStats.hp -= _damage;
 	self.EnemyStats.hp = clamp(self.EnemyStats.hp, 0, self.EnemyStats.maxHealth);
+	
+	if(!is_undefined(cont_camera))
+		cont_camera.shake_camera(7, 0.1);
 	
 	if(self.EnemyStats.hp == 0)
 	{

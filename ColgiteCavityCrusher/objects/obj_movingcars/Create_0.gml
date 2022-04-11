@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+
 function swap_car()
 {
 	var rand = irandom_range(0,4);
@@ -25,5 +26,7 @@ function swap_car()
 	}
 }
 
-depth = 0;
+depth = CalcDepthFromY();
 self.swap_car();
+isColliding = false;
+prevIsColliding = false;
