@@ -14,6 +14,7 @@ function remove_enemy(_enemy)
 	if(current_spawns <= 0)
 	{
 		cont_camera.set_target(obj_player);
+		obj_GO.show_go();
 		audio_stop_sound(snd_combatmusic);
 		audio_play_sound(snd_calmmusic, 1000, true);
 	}
