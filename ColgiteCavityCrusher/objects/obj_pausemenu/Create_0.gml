@@ -5,6 +5,7 @@ global.paused = false;
 prevIndex = -1;
 timer = 500000;
 index = 0;
+viewing_controls = false;
 
 function togglePause()
 {
