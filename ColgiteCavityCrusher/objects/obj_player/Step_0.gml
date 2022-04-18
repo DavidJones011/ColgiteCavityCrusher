@@ -44,16 +44,14 @@ if(!_block){
 		//player_sm.send_input("down");
 	}
 	_stopAttackTimer++;
-	if(_key != ""){
-		player_sm.send_input(_key);
-	}
 	
-	else if(keyboard_check_pressed(vk_space)){
+	
+	if(keyboard_check_pressed(vk_space)){
 		_stopAttackTimer = 0;
 		player_sm.send_input("attack");
 	}
 	else if(keyboard_check(vk_shift) && powerup > 0){
-		instance_create_layer(x+450*(image_xscale), y-400, "Instances", obj_beam);
+		instance_create_layer(x+550*(image_xscale), y-400, "Instances", obj_beam);
 		obj_beam.image_xscale = image_xscale;
 		player_sm.set_state("Special");
 		//player_sm.step_sm();
@@ -72,6 +70,10 @@ if(!_block){
 		blockEnd = false;
 		player_sm.send_input("stopBlock");
 		image_speed = 1;
+	}
+	
+	if(_key != ""){
+		player_sm.send_input(_key);
 	}
 	//show_debug_message(image_speed);
 }

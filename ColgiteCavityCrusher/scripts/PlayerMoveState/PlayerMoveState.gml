@@ -55,7 +55,7 @@ function PlayerMoveState(_id = "Move", _sprite = undefined, _speed = 2) : State(
 		}
 		else if(_input == "S"){
 			_y = 1;
-			lastY = -1;
+			lastY = 1;
 			lastX = 0;
 			//owner.move(0, 1);
 		}
@@ -105,7 +105,7 @@ function PlayerMoveState(_id = "Move", _sprite = undefined, _speed = 2) : State(
 		else if(_input == "anim_end"){
 			_x = lastX;
 			_y = lastY;
-	}
+		}
 		
 		
 		

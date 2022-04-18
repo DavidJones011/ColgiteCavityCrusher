@@ -12,7 +12,7 @@ _input = true;
 counts = true;
 _stopAttackTimer = 0;
 _attackTimer = 0;
-powerup = 0;
+powerup = 1;
 _block = false;
 special_bool = false;
 wasBlock = false;
@@ -89,7 +89,7 @@ function move(_x, _y){
 	if(_y == 1 && y < 4000){
 		y += _y * PlayerStats._speed;
 	}
-	else if(y > 2000 && _y == -1){
+	else if(y > 2350 && _y == -1){
 		y += _y * PlayerStats._speed;	
 	}
 	if(x+_x*PlayerStats._speed > cont_camera.posX && x+_x*PlayerStats._speed < (cont_camera.posX+cont_camera.cameraWidth*cont_camera.zoomFactor))
