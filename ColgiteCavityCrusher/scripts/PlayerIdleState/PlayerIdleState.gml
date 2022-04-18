@@ -16,6 +16,7 @@ function PlayerIdleState(_id = "Idle", _sprite = undefined) : State(_id) constru
 			_sm.get_owner().sprite_index = sprite;	
 		}
 		_sm.get_owner()._input = true;
+		_sm.get_owner()._block = false;
 		_sm.get_owner().image_speed = 1;
 		start_time = current_time;
 	}

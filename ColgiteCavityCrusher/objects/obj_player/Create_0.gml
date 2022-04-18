@@ -18,6 +18,7 @@ special_bool = false;
 wasBlock = false;
 blockEnd = false;
 powerupTotal = 0;
+blockSet = false;
 //animEnd = false;
 
 idle_state = new PlayerIdleState("Idle", spr_player_idle);
