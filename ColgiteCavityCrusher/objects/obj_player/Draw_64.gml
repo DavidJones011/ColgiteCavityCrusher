@@ -11,4 +11,7 @@ else{
 	draw_sprite(spr_empty_powerup, 0, 100, 150);
 }
 
-draw_text(800, 15, "Point Total: " +  string(points));
+draw_set_color(c_white);
+draw_rectangle(1045, 15, 1225, 40, false);
+draw_set_color(c_black);
+draw_text(1050, 15, "Point Total: " +  string(points));

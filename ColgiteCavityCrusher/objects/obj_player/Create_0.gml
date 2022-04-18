@@ -138,3 +138,11 @@ function point(_pointChange){
 		powerup++;	
 	}
 }
+
+
+function attacking(){
+	if(sprite_index == spr_player_attack || sprite_index == spr_player_attack_loop || sprite_index == spr_player_attack2 || sprite_index == spr_player_attack3){
+		return true;
+	}
+	return false;
+}
