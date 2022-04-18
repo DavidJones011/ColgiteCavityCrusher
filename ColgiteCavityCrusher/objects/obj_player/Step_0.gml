@@ -11,7 +11,7 @@ if(!_block){
 		//player_sm.send_input("left");
 	}
 
-	if(keyboard_check(ord("D"))){
+	else if(keyboard_check(ord("D"))){
 		_key = "D";
 		//player_sm.send_input("right");
 	}
@@ -63,6 +63,9 @@ if(!_block){
 		player_sm.send_input("block");
 		_block = true;
 	}
+	else if(_key != ""){
+		player_sm.send_input(_key);
+	}
 }
 	else if(keyboard_check_released(ord("E")) && _block){
 		_block = false;
@@ -72,9 +75,7 @@ if(!_block){
 		image_speed = 1;
 	}
 	
-	if(_key != ""){
-		player_sm.send_input(_key);
-	}
+	
 	//show_debug_message(image_speed);
 }
 //else if(image_index > image_number -1){
