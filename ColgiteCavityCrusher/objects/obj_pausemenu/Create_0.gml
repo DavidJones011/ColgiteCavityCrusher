@@ -10,4 +10,6 @@ viewing_controls = false;
 function togglePause()
 {
 	global.paused = !global.paused;	
+	if(!global.paused)
+		viewing_controls = false;
 }

@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 198,
-  "bbox_top": 0,
-  "bbox_bottom": 133,
+  "bbox_right": 999,
+  "bbox_top": 252,
+  "bbox_bottom": 714,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 199,
-  "height": 134,
+  "width": 1000,
+  "height": 1000,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"e9eaf885-4b26-43bd-9a45-6772de045da1","path":"sprites/spr_wasd/spr_wasd.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"e9eaf885-4b26-43bd-9a45-6772de045da1","path":"sprites/spr_wasd/spr_wasd.yy",},"LayerId":{"name":"02715dca-5339-49dd-929e-6fb5cd5b4029","path":"sprites/spr_wasd/spr_wasd.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_wasd","path":"sprites/spr_wasd/spr_wasd.yy",},"resourceVersion":"1.0","name":"e9eaf885-4b26-43bd-9a45-6772de045da1","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"f7d14246-08de-485a-8a9c-36ea43e17517","path":"sprites/spr_label_movement/spr_label_movement.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"f7d14246-08de-485a-8a9c-36ea43e17517","path":"sprites/spr_label_movement/spr_label_movement.yy",},"LayerId":{"name":"b5d4e8a9-fcd4-4361-959f-c69a89de6b04","path":"sprites/spr_label_movement/spr_label_movement.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_label_movement","path":"sprites/spr_label_movement/spr_label_movement.yy",},"resourceVersion":"1.0","name":"f7d14246-08de-485a-8a9c-36ea43e17517","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_wasd","path":"sprites/spr_wasd/spr_wasd.yy",},
+    "spriteId": {"name":"spr_label_movement","path":"sprites/spr_label_movement/spr_label_movement.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"e7c17ac8-b587-4206-a694-d89eef37aebb","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e9eaf885-4b26-43bd-9a45-6772de045da1","path":"sprites/spr_wasd/spr_wasd.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"931ae66b-154b-485a-88a7-ee589db6aa87","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f7d14246-08de-485a-8a9c-36ea43e17517","path":"sprites/spr_label_movement/spr_label_movement.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -54,18 +54,18 @@
     "backdropHeight": 768,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
-    "xorigin": 99,
-    "yorigin": 67,
+    "xorigin": 500,
+    "yorigin": 500,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_wasd","path":"sprites/spr_wasd/spr_wasd.yy",},
+    "parent": {"name":"spr_label_movement","path":"sprites/spr_label_movement/spr_label_movement.yy",},
     "resourceVersion": "1.3",
-    "name": "spr_wasd",
+    "name": "spr_label_movement",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"02715dca-5339-49dd-929e-6fb5cd5b4029","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"b5d4e8a9-fcd4-4361-959f-c69a89de6b04","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -73,7 +73,7 @@
     "path": "folders/Sprites/GUI.yy",
   },
   "resourceVersion": "1.0",
-  "name": "spr_wasd",
+  "name": "spr_label_movement",
   "tags": [],
   "resourceType": "GMSprite",
 }
