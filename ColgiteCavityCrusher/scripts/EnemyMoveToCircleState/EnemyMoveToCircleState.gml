@@ -25,6 +25,13 @@ function EnemyMoveToCircleState(_id = "MoveTo", _sprite = undefined) : State(_id
 	
 	static step_state = function(_sm)
 	{
+		var stats = _sm.get_owner().EnemyStats;
+		var rand = random_range(0,10);
+		var attack_val = GetProjectedAttackDist(stats.targetObj, _sm.get_owner(), stats.distToAttack, 600);
+		if(attack_val > 0.5)
+		{
+			_sm.set_state("MoveToTarget");
+		}
 	}
 	
 	static exit_state = function(_sm)

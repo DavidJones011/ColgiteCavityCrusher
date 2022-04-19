@@ -74,7 +74,7 @@ function update_move()
 	if(is_undefined(EnemyStats.targetPos))
 		return;
 	
-	var mod_x = 0;
+	/*var mod_x = 0;
 	var mod_y = 0;
 	for(var i = 0; i < instance_number(obj_enemy_base); ++i)
 	{
@@ -82,7 +82,7 @@ function update_move()
 		if(otherEnemy != self)
 		{
 			var dist = distance_to_object(otherEnemy);
-			if(dist < 15)
+			if(dist < 300)
 			{
 				mod_x += x - otherEnemy.x;
 				mod_y += y - otherEnemy.y;
@@ -93,7 +93,18 @@ function update_move()
 	var dist = sqrt((mod_x * mod_x) + (mod_y * mod_y));
 	mod_x = x + (mod_x / dist) * 200;
 	mod_y = y + (mod_y / dist) * 200;
-	mp_potential_step(mod_x, mod_y, EnemyStats.curSpeed, all);
+	mp_potential_step(mod_x, mod_y, EnemyStats.curSpeed, all);*/
+	
+	/*var dist = sqrt(power(EnemyStats.targetPos[0] - x, 2) + power(EnemyStats.targetPos[1] - y, 2));
+	var dir_x = (EnemyStats.targetPos[0] - x)/dist * 300;
+	var dir_y = (EnemyStats.targetPos[1] - y)/dist * 300;
+	
+	var robj = noone;
+	robj = collision_rectangle(dir_x -100, dir_y - 100, dir_x + 100, dir_y + 100, obj_enemy_base, 0, 0);
+	if(robj != noone)
+	{
+		mp_potential_step(-dir_x * 500, -dir_y * 500, EnemyStats.curSpeed, all);
+	}*/
 		
 	if (distance_to_point(EnemyStats.targetPos[0], EnemyStats.targetPos[1]) > 50)
 	{

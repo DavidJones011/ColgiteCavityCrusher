@@ -23,7 +23,8 @@ function EnemyDeathState(_id = "ProjectileAttack", _sprite = undefined) : State(
 		timer -= _sm.get_owner().delta_time;
 		if(timer <= 0)
 		{
-			stats.spawner.remove_enemy(_sm.get_owner());
+			if(!is_undefined(stats.spawner))
+				stats.spawner.remove_enemy(_sm.get_owner());
 		}
 	}
 	
