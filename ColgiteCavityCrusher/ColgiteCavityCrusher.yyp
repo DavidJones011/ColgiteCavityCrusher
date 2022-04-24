@@ -2,6 +2,7 @@
   "resources": [
     {"id":{"name":"spr_resume","path":"sprites/spr_resume/spr_resume.yy",},"order":13,},
     {"id":{"name":"spr_options","path":"sprites/spr_options/spr_options.yy",},"order":7,},
+    {"id":{"name":"obj_trashcan","path":"objects/obj_trashcan/obj_trashcan.yy",},"order":2,},
     {"id":{"name":"obj_gameover","path":"objects/obj_gameover/obj_gameover.yy",},"order":0,},
     {"id":{"name":"EnemyIdleState","path":"scripts/EnemyIdleState/EnemyIdleState.yy",},"order":7,},
     {"id":{"name":"obj_GO","path":"objects/obj_GO/obj_GO.yy",},"order":18,},
