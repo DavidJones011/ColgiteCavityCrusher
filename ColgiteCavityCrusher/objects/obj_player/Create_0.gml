@@ -5,7 +5,7 @@ PlayerStats=
 	_speed: 20
 }
 
-points = 390;
+points = 0;
 _death = false;
 _attack = false;
 _input = true;
