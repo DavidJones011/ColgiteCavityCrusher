@@ -1,6 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
-
 // camera variables
 target = obj_player;
 cameraLerpAmount = 0.05;
