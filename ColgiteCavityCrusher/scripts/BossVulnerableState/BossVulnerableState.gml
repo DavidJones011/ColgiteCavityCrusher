@@ -6,9 +6,14 @@ function BossVulnerableState(_id = "Idle") : State(_id) constructor
 {	
 	static enter_state = function(_sm)
 	{
+		_sm.get_owner().sprite_index = spr_boss_idle_body;
+		_sm.get_owner().front_tentacle.sprite_index = spr_boss_idle_ft;
+		_sm.get_owner().back_tentacle.sprite_index = spr_boss_idle_bt;
 		_sm.get_owner().image_blend = c_white;
 		_sm.get_owner().back_tentacle.image_blend = c_white;
 		_sm.get_owner().front_tentacle.image_blend = c_white;
+		_sm.get_owner().tired_timer = 5200000;
+		_sm.get_owner().vulnerable = true;
 	}
 	
 	static step_state = function(_sm)
@@ -17,7 +22,6 @@ function BossVulnerableState(_id = "Idle") : State(_id) constructor
 		if(_sm.get_owner().tired_timer <= 0.0)
 		{
 			_sm.set_state("Recover");
-			_sm.get_owner().tired_timer = 50000;
 		}
 	}
 	

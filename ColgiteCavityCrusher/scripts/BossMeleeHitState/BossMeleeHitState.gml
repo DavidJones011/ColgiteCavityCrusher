@@ -7,12 +7,12 @@ function BossMeleeHitState(_id = "BossAttack", _type = 0, _next_id = "Idle") : S
 	next_id = _next_id;
 	bHit = false;
 	type = _type;
-	timer = 60000;
+	timer = 0;
 		
 	static enter_state = function(_sm)
 	{
 		_sm.get_owner().sprite_index = spr_boss_attack_body;
-		timer = 60000;
+		timer = 97000;
 		var rand = random_range(0, 100);
 		if(rand > -1 && rand < 50)
 		{
@@ -48,7 +48,10 @@ function BossMeleeHitState(_id = "BossAttack", _type = 0, _next_id = "Idle") : S
 		if(timer <= 0.0 && !bHit)
 		{
 			audio_play_sound(snd_groundsmack, 10, false);
-			_sm.get_owner().hit(stats.distToAttack, 500, 100, -200, 10);
+			cont_camera.shake_camera(10, 0.2);
+			_sm.get_owner().back_tentacle.reset_hit();
+			_sm.get_owner().front_tentacle.reset_hit();
+			//_sm.get_owner().hit(stats.distToAttack, 500, 100, -200, 10);
 			_sm.get_owner().energy -= 25;
 			bHit = true;
 		}
@@ -58,6 +61,8 @@ function BossMeleeHitState(_id = "BossAttack", _type = 0, _next_id = "Idle") : S
 	{
 		_sm.get_owner().back_tentacle.isMoving = true;
 		_sm.get_owner().front_tentacle.isMoving = true;
+		_sm.get_owner().back_tentacle.has_hit = true;
+		_sm.get_owner().front_tentacle.has_hit = true;
 	}
 	
 	static handle_input = function(_sm, _input="")

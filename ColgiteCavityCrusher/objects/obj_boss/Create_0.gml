@@ -8,12 +8,13 @@ energy = 100.0;
 vulnerable = false;
 EnemyStats.hurtSound = snd_hurt_04;
 
-EnemyStats.maxHealth = 1000;
-EnemyStats.hp = 1000;
+EnemyStats.maxHealth = 400;
+EnemyStats.hp = 400;
 
-tired_timer = 50000;
+EnemyStats.spawner = cont_bossevent;
+tired_timer = 52000;
 
-healthSegment = EnemyStats.hp / 3;
+healthSegment = EnemyStats.maxHealth / 3;
 phase = 0;
 
 back_tentacle = instance_find(obj_tentacle,0);
@@ -22,8 +23,6 @@ front_tentacle = instance_find(obj_tentacle,1);
 image_blend = c_red;
 back_tentacle.image_blend = c_red;
 front_tentacle.image_blend = c_red;
-
-//cont_bossevent.register_enemy(self);
 
 // create ranged enemy states
 idle_state = new BossIdleState("Idle");
@@ -57,7 +56,7 @@ function take_damage(_damage = 10)
 	{
 		self.EnemyStats.hp -= _damage;
 		self.EnemyStats.hp = clamp(self.EnemyStats.hp, 0, self.EnemyStats.maxHealth);
-		if(EnemyStats.hp < 1000 - healthSegment * (phase + 1))
+		if(EnemyStats.hp < EnemyStats.maxHealth - healthSegment * (phase + 1))
 		{
 			self.EnemyStats.hp = clamp(self.EnemyStats.hp, 1000 - healthSegment * (phase + 1), self.EnemyStats.maxHealth);
 			vulnerable = false;

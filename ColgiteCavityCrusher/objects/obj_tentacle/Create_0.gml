@@ -5,3 +5,10 @@ depth = CalcDepthFromY() - 10;
 isMoving = true;
 time = 0;
 initial_y = y;
+
+has_hit = false;
+
+function reset_hit()
+{
+	has_hit = false;
+}

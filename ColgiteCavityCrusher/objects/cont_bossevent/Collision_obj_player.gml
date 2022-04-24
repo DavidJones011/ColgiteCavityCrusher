@@ -5,4 +5,5 @@ if(!disabled)
 {
 	cont_camera.set_target(self);
 	spawn_enemies();
+	disabled = true;
 }

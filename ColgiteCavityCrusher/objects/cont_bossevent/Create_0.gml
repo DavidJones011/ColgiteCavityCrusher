@@ -33,16 +33,15 @@ function remove_enemy(_enemy)
 
 function spawn_enemies(_wave = 0)
 {
-	if(_wave = 0)
+	if(_wave = 0 && !disabled)
 	{
 		audio_stop_sound(snd_calmmusic);
 		audio_play_sound(snd_bossmusic, 1000, true);	
-		disabled = true;
 	}
 	
 	for(var i = 0; i < ds_list_find_value(melee_enemies, _wave); i++)
 	{
-		var spot = FindSpotOutsideOfCamera(view_camera[0], 1800, 400);
+		var spot = FIndSpotOutsideLeftOfCamera(view_camera[0], 1900, 400);
 		var inst = instance_create_depth(spot[0], spot[1], 0, obj_enemy_melee);
 		with(inst)
 		{
@@ -53,7 +52,7 @@ function spawn_enemies(_wave = 0)
 	
 	for(var i = 0; i < ds_list_find_value(ranged_enemies, _wave); i++)
 	{
-		var spot = FindSpotOutsideOfCamera(view_camera[0], 1800, 400);
+		var spot = FIndSpotOutsideLeftOfCamera(view_camera[0], 1900, 400);
 		var inst = instance_create_depth(spot[0], spot[1], 0, obj_enemy_ranged);
 		with(inst)
 		{

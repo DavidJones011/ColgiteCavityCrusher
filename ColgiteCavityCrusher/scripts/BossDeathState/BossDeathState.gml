@@ -14,9 +14,13 @@ function BossDeathState(_id = "ProjectileAttack", _sprite = undefined, _sprite_b
 		if(!is_undefined(sprite))
 		{
 			_sm.get_owner().sprite_index = sprite;
-			_sm.get_owner().back_tentacle.sprite_index = sprite_bt;
-			_sm.get_owner().front_tentacle.sprite_index = sprite_ft;
-			_sm.get_owner().solid = false;
+			_sm.get_owner().image_blend = c_white;
+			_sm.get_owner().back_tentacle.sprite_index = spr_boss_death_bt;
+			_sm.get_owner().front_tentacle.sprite_index = spr_boss_death_ft;
+			_sm.get_owner().back_tentacle.image_blend = c_white;
+			_sm.get_owner().front_tentacle.image_blend = c_white;
+			_sm.get_owner().back_tentacle.isMoving = false;
+			_sm.get_owner().front_tentacle.isMoving = false;
 		}
 		timer = timeToDisappear;
 	}
@@ -28,7 +32,11 @@ function BossDeathState(_id = "ProjectileAttack", _sprite = undefined, _sprite_b
 		if(timer <= 0)
 		{
 			if(!is_undefined(stats.spawner))
-				stats.spawner.remove_enemy(_sm.get_owner());
+			{
+				_sm.get_owner().back_tentacle.visible = false;
+				_sm.get_owner().front_tentacle.visible = false;
+				stats.spawner.remove_enemy(_sm.get_owner());	
+			}
 		}
 	}
 	
@@ -42,6 +50,8 @@ function BossDeathState(_id = "ProjectileAttack", _sprite = undefined, _sprite_b
 			_sm.get_owner().image_index = _sm.get_owner().sprite_get_number(sprite)-1;
 			_sm.get_owner().back_tentacle.image_index = _sm.get_owner().sprite_get_number(sprite_bt)-1;
 			_sm.get_owner().front_tentacle.image_index = _sm.get_owner().sprite_get_number(sprite_ft)-1;
+			_sm.get_owner().back_tentacle.visible = false;
+			_sm.get_owner().front_tentacle.visible = false;
 		}
 	}
 }

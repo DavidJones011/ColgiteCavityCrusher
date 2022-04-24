@@ -205,7 +205,7 @@ function spawn_pickup()
  */
 function set_spawner(_spawner)
 {
-	if(is_undefined(_spawner) || _spawner.object_index != cont_spawner)
+	if(is_undefined(_spawner) || (_spawner.object_index != cont_spawner && _spawner.object_index != cont_bossevent))
 		return;		
 	self.EnemyStats.spawner = _spawner;
 }

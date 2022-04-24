@@ -7,7 +7,7 @@ if(!global.paused)
 	if(isMoving)
 	{
 		time += delta_time / 1000000;
-		y = initial_y + sin(time) * 400;	
+		y = initial_y + sin(time + offset) * 400;	
 	}	
 }
 else

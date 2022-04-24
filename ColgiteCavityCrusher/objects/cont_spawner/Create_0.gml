@@ -27,7 +27,7 @@ function spawn_enemies()
 	disabled = true;
 	for(var i = 0; i < melee_enemies; i++)
 	{
-		var spot = FindSpotOutsideOfCamera(view_camera[0], 1800, 400);
+		var spot = FindSpotOutsideOfCamera(view_camera[0], 1900, 400);
 		var inst = instance_create_depth(spot[0], spot[1], 0, obj_enemy_melee);
 		with(inst)
 		{
@@ -38,7 +38,7 @@ function spawn_enemies()
 	
 	for(var i = 0; i < ranged_enemies; i++)
 	{
-		var spot = FindSpotOutsideOfCamera(view_camera[0], 1800, 400);
+		var spot = FindSpotOutsideOfCamera(view_camera[0], 1900, 400);
 		var inst = instance_create_depth(spot[0], spot[1], 0, obj_enemy_ranged);
 		with(inst)
 		{

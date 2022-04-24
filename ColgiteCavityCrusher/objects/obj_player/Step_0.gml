@@ -52,6 +52,7 @@ if(!_block){
 		player_sm.send_input("attack");
 	}
 	else if(keyboard_check(ord("L")) && powerup > 0){
+		cont_camera.shake_camera(30, 0.5);
 		instance_create_layer(x+550*(image_xscale), y-400, "Instances", obj_beam);
 		obj_beam.image_xscale = image_xscale;
 		player_sm.set_state("Special");
