@@ -12,6 +12,9 @@ function EnemyDeathState(_id = "ProjectileAttack", _sprite = undefined) : State(
 		if(!is_undefined(sprite))
 		{
 			_sm.get_owner().sprite_index = sprite;
+			_sm.get_owner().image_blend = c_white;
+			_sm.get_owner().back_tentacle.image_blend = c_white;
+			_sm.get_owner().front_tentacle.image_blend = c_white;
 			_sm.get_owner().solid = false;
 		}
 		timer = timeToDisappear;

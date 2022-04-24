@@ -9,11 +9,12 @@ function BossRecoverState(_id = "Idle", _sprite = undefined) : State(_id) constr
 	
 	static enter_state = function(_sm)
 	{
-		// set the sprite
-		if(!is_undefined(sprite))
-		{
-			_sm.get_owner().sprite_index = sprite;	
-		}
+		cont_bossevent.spawn_enemies(_sm.get_owner().phase);
+		_sm.get_owner().image_blend = c_red;
+		_sm.get_owner().back_tentacle.image_blend = c_red;
+		_sm.get_owner().front_tentacle.image_blend = c_red;
+		_sm.set_state("Idle");
+		_sm.get_owner().energy = 100.0;
 	}
 	
 	static step_state = function(_sm)

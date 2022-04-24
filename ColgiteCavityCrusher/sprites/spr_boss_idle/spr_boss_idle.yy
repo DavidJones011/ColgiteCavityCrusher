@@ -241,8 +241,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Enemies",
-    "path": "folders/Sprites/Enemies.yy",
+    "name": "Boss",
+    "path": "folders/Sprites/Enemies/Boss.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_boss_idle",

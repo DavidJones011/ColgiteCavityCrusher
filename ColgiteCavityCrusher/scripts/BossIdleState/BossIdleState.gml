@@ -2,28 +2,36 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
 // simple idle state for ranged nemies
-function BossIdleState(_id = "Idle", _sprite = undefined) : State(_id) constructor
+function BossIdleState(_id = "Idle") : State(_id) constructor
 {
-	sprite = _sprite;
-	timer = 0.0;
+	timer = 30000;
 	
 	static enter_state = function(_sm)
 	{
 		// set the sprite
-		if(!is_undefined(sprite))
-		{
-			_sm.get_owner().sprite_index = sprite;	
-		}
+		_sm.get_owner().sprite_index = spr_boss_idle_body;
+		_sm.get_owner().front_tentacle.sprite_index = spr_boss_idle_ft;
+		_sm.get_owner().back_tentacle.sprite_index = spr_boss_idle_bt;
+		timer = 30000;
 	}
 	
 	static step_state = function(_sm)
 	{
 		var stats = _sm.get_owner().EnemyStats;
+		timer -= delta_time;
+		if(timer <= 0.0)
+		{
+			var val = GetSideValue(view_camera[0], 1800, stats.targetObj);
+			if(val < 0.5)
+				_sm.set_state("AttackBT");
+			else
+				_sm.set_state("AttackFT");
+		}
+		
 		if(_sm.get_owner().energy <= 0)
 		{
-			
+			_sm.set_state("Weak");
 		}
-		//attack
 	}
 	
 	static exit_state = function(_sm)

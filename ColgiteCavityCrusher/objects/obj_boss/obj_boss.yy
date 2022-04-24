@@ -1,9 +1,9 @@
 {
   "spriteId": {
-    "name": "spr_boss_idle",
-    "path": "sprites/spr_boss_idle/spr_boss_idle.yy",
+    "name": "spr_boss_idle_body",
+    "path": "sprites/spr_boss_idle_body/spr_boss_idle_body.yy",
   },
-  "solid": false,
+  "solid": true,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
@@ -25,6 +25,7 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":12,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
