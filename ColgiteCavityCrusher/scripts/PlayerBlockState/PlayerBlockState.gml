@@ -63,10 +63,11 @@ function PlayerBlockState(_id = "Block", _sprite = undefined, _speed = 2) : Stat
 		}
 		else if(_input == "hit"){
 			_sm.get_owner().image_speed = 1;
+			_sm.set_state("BlockHit");
 			_sm.get_owner().sprite_index = spr_player_block_hit;
 			_sm.get_owner().image_index = 0;
-			_sm.get_owner()._block = false;
-			_sm.set_state("BlockHit");
+			_sm.get_owner().blockEnd = false;
+			_sm.get_owner().block = false;
 		}
 		
 	}

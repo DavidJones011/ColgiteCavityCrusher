@@ -5,7 +5,7 @@ PlayerStats=
 	_speed: 20
 }
 
-points = 0;
+points = 390;
 _death = false;
 _attack = false;
 _input = true;
@@ -18,6 +18,7 @@ special_bool = false;
 wasBlock = false;
 blockEnd = false;
 powerupTotal = 0;
+hasInput = false;
 blockSet = false;
 //animEnd = false;
 
@@ -64,10 +65,9 @@ function take_damage(_damage, _x){
 				_input = false;
 			}
 		}
-		else{
+		else if(!hasInput){
 			player_sm.set_state("BlockHit");
 			image_speed = 1;
-			blockEnd = false;
 			blockEnd = false;
 			wasBlock = true;
 		}
@@ -135,6 +135,7 @@ function block(){
 function point(_pointChange){
 	points += _pointChange;	
 	if(points > 400*(powerupTotal + 1)){
+		instance_create_layer(x ,2200, "Instances", obj_powerup_text);
 		powerupTotal++;
 		powerup++;	
 	}
