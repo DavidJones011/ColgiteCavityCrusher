@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "Sprite84",
-    "path": "sprites/Sprite84/Sprite84.yy",
+    "name": "spr_powerupready",
+    "path": "sprites/spr_powerupready/spr_powerupready.yy",
   },
   "solid": false,
   "visible": true,
