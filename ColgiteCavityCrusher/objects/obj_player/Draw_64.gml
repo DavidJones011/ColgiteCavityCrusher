@@ -12,6 +12,7 @@ else{
 }
 
 draw_set_color(c_white);
-draw_rectangle(1045, 15, 1225, 40, false);
+//draw_rectangle(1045, 15, 1225, 40, false);
+draw_sprite(spr_point_b, 0, 1050, 30);
 draw_set_color(c_black);
-draw_text(1050, 15, "Point Total: " +  string(points));
+draw_text(1100, 20,  string(points));
