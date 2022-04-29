@@ -56,6 +56,7 @@ function take_damage(_damage, _x){
 			point(-20);
 			if(PlayerStats.hp <=0){
 				audio_play_sound(snd_player_death, 10, false);
+				_input = false;
 				player_sm.set_state("Death");
 		
 			}
