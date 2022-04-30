@@ -13,8 +13,8 @@ function BossMeleeHitState(_id = "BossAttack", _type = 0, _next_id = "Idle") : S
 	{
 		_sm.get_owner().sprite_index = spr_boss_attack_body;
 		timer = 97000;
-		var rand = random_range(0, 100);
-		if(rand > -1 && rand < 50)
+		var rand = random_range(0, 29);
+		if(rand > -1 && rand < 10)
 		{
 			if(type == 0)
 			{
@@ -23,6 +23,17 @@ function BossMeleeHitState(_id = "BossAttack", _type = 0, _next_id = "Idle") : S
 			else
 			{
 				_sm.get_owner().front_tentacle.sprite_index = spr_boss_attack_near;
+			}
+		}
+		else if(rand >= 10 && rand < 20)
+		{
+			if(type == 0)
+			{
+				_sm.get_owner().back_tentacle.sprite_index = spr_boss_attack_mid;
+			}
+			else
+			{
+				_sm.get_owner().front_tentacle.sprite_index = spr_boss_attack_mid;
 			}
 		}
 		else

@@ -57,7 +57,7 @@ function move_to_circle_at_target()
 	{
 		cancel_move();
 		EnemyStats.targetPos = destination;
-		EnemyStats.curSpeed = EnemyStats.maxSpeed;
+		EnemyStats.curSpeed = random_range(EnemyStats.minSpeed, EnemyStats.maxSpeed);
 		EnemyStats.isMoving = true;
 	}
 	return EnemyStats.isMoving;	

@@ -4,9 +4,11 @@
 event_inherited();
 
 //change stats
-EnemyStats.attackSpeed = 400000;
-EnemyStats.attack_dev = 10000;
+EnemyStats.attackSpeed = 15000;
+EnemyStats.attack_dev = 15000;
 EnemyStats.distToAttack = 400;
+EnemyStats.maxSpeed = 17.0;
+EnemyStats.minSpeed = 12.0;
 EnemyStats.hurtSound = snd_hurt_03;
 
 // create ranged enemy states
