@@ -95,7 +95,7 @@
     "spriteId": {"name":"spr_player_hit","path":"sprites/spr_player_hit/spr_player_hit.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 30.0,
+    "playbackSpeed": 36.0,
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,

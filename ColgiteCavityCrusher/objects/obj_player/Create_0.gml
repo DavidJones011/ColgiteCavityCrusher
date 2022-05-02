@@ -20,6 +20,7 @@ blockEnd = false;
 powerupTotal = 0;
 hasInput = false;
 blockSet = false;
+iframe = false;
 //animEnd = false;
 
 idle_state = new PlayerIdleState("Idle", spr_player_idle);
@@ -49,8 +50,11 @@ player_sm.set_default_state("Idle");
 
 
 function take_damage(_damage, _x){
-	if(!special_bool){
+	if(!special_bool && !iframe){
+			iframe = true;
+			alarm[0] = room_speed;
 		if((!_block || (image_xscale > 0 && _x < x) || (image_xscale < 0 && _x > x))){
+			
 			image_speed = 1;
 			PlayerStats.hp -= _damage;
 			point(-20);

@@ -2,6 +2,7 @@
 // You can write your code in this editor
 player_sm.step_sm();
 hasInput = false;
+
 if(!global.paused){
 depth = CalcDepthFromY();
 if(_input && !special_bool){
@@ -57,7 +58,8 @@ if(!_block){
 		instance_create_layer(x+550*(image_xscale), y-400, "Instances", obj_beam);
 		obj_beam.image_xscale = image_xscale;
 		player_sm.set_state("Special");
-		special_bool = true;	
+		special_bool = true;
+		_input = false;
 	}
 	
 	else if(keyboard_check(ord("K")) && !_block ){

@@ -8,7 +8,7 @@ if(powerup > 0){
 	draw_sprite(spr_power_up, 0, 100, 150);
 }
 else{
-	draw_sprite(spr_empty_powerup, 0, 100, 150);
+	draw_sprite_part(spr_power_up, 0, 0, 0,(points - (powerupTotal * 400) - 10)/4, 100, 50, 100);
 }
 
 draw_set_color(c_white);
