@@ -12,8 +12,8 @@ function BossVulnerableState(_id = "Idle") : State(_id) constructor
 		_sm.get_owner().front_tentacle.isMoving = false;
 		_sm.get_owner().back_tentacle.isMoving = false;
 		_sm.get_owner().image_blend = c_white;
-		//_sm.get_owner().back_tentacle.image_blend = c_white;
-		//_sm.get_owner().front_tentacle.image_blend = c_white;
+		_sm.get_owner().back_tentacle.image_blend = c_white;
+		_sm.get_owner().front_tentacle.image_blend = c_white;
 		_sm.get_owner().tired_timer = 5200000;
 		_sm.get_owner().vulnerable = true;
 	}

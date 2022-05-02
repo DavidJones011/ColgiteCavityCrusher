@@ -20,9 +20,9 @@ phase = 0;
 back_tentacle = instance_find(obj_tentacle,0);
 front_tentacle = instance_find(obj_tentacle,1);
 
-//image_blend = c_red;
-//back_tentacle.image_blend = c_red;
-//front_tentacle.image_blend = c_red;
+image_blend = c_red;
+back_tentacle.image_blend = c_red;
+front_tentacle.image_blend = c_red;
 
 // create ranged enemy states
 idle_state = new BossIdleState("Idle");

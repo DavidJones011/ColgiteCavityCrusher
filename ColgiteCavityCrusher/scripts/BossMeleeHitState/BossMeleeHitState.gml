@@ -12,7 +12,7 @@ function BossMeleeHitState(_id = "BossAttack", _type = 0, _next_id = "Idle") : S
 	static enter_state = function(_sm)
 	{
 		_sm.get_owner().sprite_index = spr_boss_attack_body;
-		timer = 97000;
+		timer = 200000;
 		var rand = random_range(0, 29);
 		if(rand > -1 && rand < 10)
 		{
